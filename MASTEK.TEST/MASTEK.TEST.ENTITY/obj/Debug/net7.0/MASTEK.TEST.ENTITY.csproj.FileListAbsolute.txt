@@ -1,0 +1,12 @@
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/bin/Debug/net7.0/MASTEK.TEST.ENTITY.deps.json
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/bin/Debug/net7.0/MASTEK.TEST.ENTITY.dll
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/bin/Debug/net7.0/MASTEK.TEST.ENTITY.pdb
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.csproj.AssemblyReference.cache
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.AssemblyInfoInputs.cache
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.AssemblyInfo.cs
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.csproj.CoreCompileInputs.cache
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.dll
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/refint/MASTEK.TEST.ENTITY.dll
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/MASTEK.TEST.ENTITY.pdb
+/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/Debug/net7.0/ref/MASTEK.TEST.ENTITY.dll

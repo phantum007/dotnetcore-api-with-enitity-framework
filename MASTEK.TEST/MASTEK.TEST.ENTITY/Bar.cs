@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace MASTEK.TEST.ENTITY;
+
+public partial class Bar
+{
+    /// <summary>
+    /// Primary Key
+    /// </summary>
+    public int Id { get; set; }
+
+    public DateTime? CreateTime { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Address { get; set; }
+}
