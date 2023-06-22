@@ -1,0 +1,7 @@
+﻿<Properties StartupConfiguration="{81D12874-F443-4639-A78A-F07A58A27295}|https">
+  <DisabledProjects>
+    <String>MASTEK.TEST.UNITTEST/MASTEK.TEST.UNITTEST.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.MASTEK.TEST.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ja7T+WqysmcLaDSlIEu1fgvwjBKCU/KypKts2smlG5jOL6V18LQxgcHI9niZTO6ZkH5SsEygkQJR/NCkBT6fKw==",
+  "dgSpecHash": "Z2fU98oSCinvi1pEmE23MAONszzM2dyzOXMkm2gZtJYvh83UmjzclJnpXOP3jPgP3O2ZBQT+D3Md22mtaoTN2Q==",
   "success": true,
-  "projectFilePath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
+  "projectFilePath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
   "expectedPackageFiles": [
     "/Users/prabhatshukla/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/prabhatshukla/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

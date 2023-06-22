@@ -13,3 +13,18 @@
 /Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/refint/MASTEK.TEST.DAL.dll
 /Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.pdb
 /Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/ref/MASTEK.TEST.DAL.dll
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/bin/Debug/net7.0/MASTEK.TEST.DAL.deps.json
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/bin/Debug/net7.0/MASTEK.TEST.DAL.dll
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/bin/Debug/net7.0/MASTEK.TEST.DAL.pdb
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/bin/Debug/net7.0/MASTEK.TEST.ENTITY.dll
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/bin/Debug/net7.0/MASTEK.TEST.ENTITY.pdb
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.csproj.AssemblyReference.cache
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.AssemblyInfoInputs.cache
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.AssemblyInfo.cs
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.csproj.CoreCompileInputs.cache
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.csproj.CopyComplete
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.dll
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/refint/MASTEK.TEST.DAL.dll
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/MASTEK.TEST.DAL.pdb
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/Debug/net7.0/ref/MASTEK.TEST.DAL.dll

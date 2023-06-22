@@ -31,7 +31,8 @@ public class BeerController : ControllerBase
     [HttpGet("beer/{id:int}")]
     public BeerModel GetBeer(int Id)
     {
-        var response = _mapper.Map<Beer, BeerModel>(_beerservice.GetBeer(Id));
+        var response1 = _beerservice.GetBeer(Id);
+        var response = _mapper.Map<Beer, BeerModel>(response1);
           return response;
     }
 

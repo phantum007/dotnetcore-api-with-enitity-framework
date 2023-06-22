@@ -2328,11 +2328,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
+      "projectUniqueName": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
       "projectName": "MASTEK.TEST.ENTITY",
-      "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
+      "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
       "packagesPath": "/Users/prabhatshukla/.nuget/packages/",
-      "outputPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/",
+      "outputPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/prabhatshukla/.nuget/NuGet/NuGet.Config"

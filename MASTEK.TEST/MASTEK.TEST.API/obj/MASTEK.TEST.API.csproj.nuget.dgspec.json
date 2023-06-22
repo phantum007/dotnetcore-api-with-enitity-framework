@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj": {}
+    "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj": {}
   },
   "projects": {
-    "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj": {
+    "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
+        "projectUniqueName": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
         "projectName": "MASTEK.TEST.API",
-        "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
+        "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
         "packagesPath": "/Users/prabhatshukla/.nuget/packages/",
-        "outputPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.API/obj/",
+        "outputPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prabhatshukla/.nuget/NuGet/NuGet.Config"
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj": {
-                "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj"
+              "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj": {
+                "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj": {
+    "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj",
+        "projectUniqueName": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj",
         "projectName": "MASTEK.TEST.DAL",
-        "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj",
+        "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/MASTEK.TEST.DAL.csproj",
         "packagesPath": "/Users/prabhatshukla/.nuget/packages/",
-        "outputPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.DAL/obj/",
+        "outputPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.DAL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prabhatshukla/.nuget/NuGet/NuGet.Config"
@@ -115,8 +115,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj": {
-                "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj"
+              "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj": {
+                "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj"
               }
             }
           }
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj": {
+    "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
+        "projectUniqueName": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
         "projectName": "MASTEK.TEST.ENTITY",
-        "projectPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
+        "projectPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/MASTEK.TEST.ENTITY.csproj",
         "packagesPath": "/Users/prabhatshukla/.nuget/packages/",
-        "outputPath": "/Volumes/Personal/work/techaddas/dot net/MASTEK TEST/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/",
+        "outputPath": "/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.ENTITY/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/prabhatshukla/.nuget/NuGet/NuGet.Config"
