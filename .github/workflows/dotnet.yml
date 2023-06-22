@@ -10,8 +10,11 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  build_and_test:
+    env:
+        SOLUTION : 'MASTEK.TEST/MASTEK.TEST.sln' 
+        BUILD_CONFIG : 'Release' 
+        
     runs-on: ubuntu-latest
 
     steps:
@@ -20,9 +23,12 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+        
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore $SOLUTION
+      
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG
