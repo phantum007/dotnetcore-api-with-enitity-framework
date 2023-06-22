@@ -13,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IBeerservice, Beerservice>();
+builder.Services.AddScoped<IBreweryService, BreweryService>();
+builder.Services.AddScoped<IBarService, BarService>();
 
 var app = builder.Build();
 

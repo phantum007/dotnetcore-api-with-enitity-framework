@@ -36,7 +36,11 @@ namespace MASTEK.TEST.DAL
            return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume &&  b.PercentageAlcoholByVolume < ltAlcoholByVolume);
         }
 
-     
+
+        //internal IEnumerable<Beer> GetBeerByBreweryId(int breweryId)
+        //{
+        //    return context.Beers.Where(b => b.BreweryId == breweryId);
+        //}
 
         public bool PostBeer(Beer beer)
         {

@@ -41,8 +41,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
             {
                 Id = beerId,
                 Name = "mock_beer_name",
-                PercentageAlcoholByVolume = 4,
-                BreweryId = 1
+                PercentageAlcoholByVolume = 4
             };
 
             _beerservice.Setup(x => x.GetBeer(beerId)).Returns(beer);
@@ -53,8 +52,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
                     {
                         Id = beer.Id,
                         Name = beer.Name,
-                        PercentageAlcoholByVolume = beer.PercentageAlcoholByVolume,
-                        BreweryId = beer.BreweryId
+                        PercentageAlcoholByVolume = beer.PercentageAlcoholByVolume
                     }
 
                 );

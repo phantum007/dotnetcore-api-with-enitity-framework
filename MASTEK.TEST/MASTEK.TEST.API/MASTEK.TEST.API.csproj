@@ -24,10 +24,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Controllers\BarController.cs" />
-    <Compile Remove="Controllers\BreweryController.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Models\" />
     <None Remove="MappingProfiles\" />
   </ItemGroup>

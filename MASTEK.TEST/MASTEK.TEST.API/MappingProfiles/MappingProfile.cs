@@ -10,7 +10,21 @@ namespace MASTEK.TEST.API.MappingProfiles
 		public MappingProfile()
 		{
 			CreateMap<Beer, BeerModel>();
-			CreateMap<BeerModel,Beer>();
+
+			CreateMap<Brewery, BreweryModel>();
+			CreateMap<Brewery, BreweryWithBeerModel>();
+
+            CreateMap<Bar, BarModel>();
+			CreateMap<Bar, BarWithBeerModel>();
+			//.ForMember(d => d.Beers, o => o.MapFrom(s => s.Beers));
+
+            CreateMap<BeerModel, Beer>();
+
+            CreateMap<BreweryModel, Brewery>();
+            CreateMap<BreweryBeerMappingModel, BreweryBeersMapping>();
+
+            CreateMap<BarModel, Bar>();
+            CreateMap<BarBeersMappingModel, BarBeersMapping>();
 
         }
 	}

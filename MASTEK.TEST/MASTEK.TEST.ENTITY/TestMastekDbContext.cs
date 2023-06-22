@@ -23,6 +23,8 @@ public partial class TestMastekDbContext : DbContext
 
     public virtual DbSet<Brewery> Breweries { get; set; }
 
+    public virtual DbSet<BreweryBeersMapping> BreweryBeersMappings { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -55,9 +57,19 @@ public partial class TestMastekDbContext : DbContext
                 .HasNoKey()
                 .ToTable("Bar_Beers_mapping");
 
-            entity.Property(e => e.BarId).HasColumnType("mediumtext");
-            entity.Property(e => e.BeerId).HasColumnType("mediumtext");
+            entity.HasIndex(e => e.BarId, "BarId");
+
+            entity.HasIndex(e => e.BeerId, "BeerId");
+
             entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
+
+            entity.HasOne(d => d.Bar).WithMany()
+                .HasForeignKey(d => d.BarId)
+                .HasConstraintName("Bar_Beers_mapping_ibfk_1");
+
+            entity.HasOne(d => d.Beer).WithMany()
+                .HasForeignKey(d => d.BeerId)
+                .HasConstraintName("Bar_Beers_mapping_ibfk_2");
         });
 
         modelBuilder.Entity<Beer>(entity =>
@@ -66,26 +78,15 @@ public partial class TestMastekDbContext : DbContext
 
             entity.ToTable("Beer");
 
-            entity.HasIndex(e => e.BreweryId, "BreweryId");
-
             entity.Property(e => e.Id)
                 .HasComment("Primary Key")
                 .HasColumnName("id");
-
             entity.Property(e => e.CreateTime)
                 .HasColumnType("datetime")
                 .HasColumnName("create_time");
-
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
-
-            entity.Property(e => e.PercentageAlcoholByVolume).HasColumnType("mediumtext");
-
-            entity.HasOne(d => d.Brewery).WithMany(p => p.Beers)
-                .HasForeignKey(d => d.BreweryId)
-                .HasConstraintName("Beer_ibfk_1");
-
         });
 
         modelBuilder.Entity<Brewery>(entity =>
@@ -97,15 +98,33 @@ public partial class TestMastekDbContext : DbContext
             entity.Property(e => e.Id)
                 .HasComment("Primary Key")
                 .HasColumnName("id");
-
             entity.Property(e => e.CreateTime)
                 .HasColumnType("datetime")
                 .HasColumnName("create_time");
-
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
+        });
 
+        modelBuilder.Entity<BreweryBeersMapping>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Brewery_Beers_mapping");
+
+            entity.HasIndex(e => e.BreweryId, "BarId");
+
+            entity.HasIndex(e => e.BeerId, "BeerId");
+
+            entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
+
+            entity.HasOne(d => d.Beer).WithMany()
+                .HasForeignKey(d => d.BeerId)
+                .HasConstraintName("Brewery_Beers_mapping_ibfk_2");
+
+            entity.HasOne(d => d.Brewery).WithMany()
+                .HasForeignKey(d => d.BreweryId)
+                .HasConstraintName("Brewery_Beers_mapping_ibfk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);

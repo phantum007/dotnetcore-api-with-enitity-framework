@@ -11,6 +11,4 @@ public class BeerModel
 
     public double? PercentageAlcoholByVolume { get; set; }
 
-    public int? BreweryId { get; set; }
-
 }

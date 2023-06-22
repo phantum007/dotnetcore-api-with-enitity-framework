@@ -16,7 +16,7 @@ public partial class Beer
 
     public double? PercentageAlcoholByVolume { get; set; }
 
-    public int? BreweryId { get; set; }
+    //public int? BreweryId { get; set; }
 
-    public virtual Brewery? Brewery { get; set; }
+    //public virtual Brewery? Brewery { get; set; }
 }
