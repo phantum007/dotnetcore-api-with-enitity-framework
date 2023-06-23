@@ -2,9 +2,11 @@
 using System.Xml.Linq;
 using AutoMapper;
 using MASTEK.TEST.API.Controllers;
+using MASTEK.TEST.API.ExceptionClaases;
 using MASTEK.TEST.API.Models;
 using MASTEK.TEST.DAL;
 using MASTEK.TEST.ENTITY;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -19,50 +21,85 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
 
         public BeerControllerTest()
-		{
-			beerController = new BeerController(_logger.Object, _beerservice.Object, _mapper.Object);
-
+        {
+            beerController = new BeerController(_logger.Object, _beerservice.Object, _mapper.Object);
         }
 
-		[Fact]
-		public void GetBeer_for_no_id()
-		{
-			//arrange
-			//	act
-			//	asser
-		}
+        //Start GetBeer
 
+        Beer testBeerObj = new Beer()
+        {
+            Id = 100,
+            Name = "mock_beer_name",
+            PercentageAlcoholByVolume = 4
+        };
+
+       
         [Fact]
-        public void GetBeer_for_correct_id()
+        public void GetBeer_good_flow()
         {
             //arrange
             var beerId = 100;
-            var beer = new Beer()
-            {
-                Id = beerId,
-                Name = "mock_beer_name",
-                PercentageAlcoholByVolume = 4
-            };
+          
+            _beerservice.Setup(x => x.GetBeer(beerId)).Returns(testBeerObj);
 
-            _beerservice.Setup(x => x.GetBeer(beerId)).Returns(beer);
-
-            _mapper.Setup(x => x.Map<Beer, BeerModel>(beer))
+            _mapper.Setup(x => x.Map<Beer, BeerModel>(testBeerObj))
                 .Returns(
                     new BeerModel()
                     {
-                        Id = beer.Id,
-                        Name = beer.Name,
-                        PercentageAlcoholByVolume = beer.PercentageAlcoholByVolume
+                        Id = testBeerObj.Id,
+                        Name = testBeerObj.Name,
+                        PercentageAlcoholByVolume = testBeerObj.PercentageAlcoholByVolume
                     }
-
                 );
 
-            var actual_beer = beerController.GetBeer(beerId);
+            var actual_beer_responce = beerController.GetBeer(beerId);
 
-            Assert.Equal(actual_beer.Name, "mock_beer_name");
+            var expected_responce = new BeerResponceModel()
+            {
+                beerModel = new BeerModel()
+                {
+                    Id = testBeerObj.Id,
+                    Name = testBeerObj.Name,
+                    PercentageAlcoholByVolume = testBeerObj.PercentageAlcoholByVolume
+                },
+                errorDetails = null
+        };
+
+        Assert.Equivalent(actual_beer_responce, expected_responce);
             //	act
             //	asser
         }
+
+        [Fact]
+        public void GetBeer_for_no_id()
+        {
+            var _testBeerObj = testBeerObj;
+            _testBeerObj.Id = 0;
+
+            _beerservice.Setup(x => x.GetBeer(_testBeerObj.Id)).Returns(_testBeerObj);
+
+            _mapper.Setup(x => x.Map<Beer, BeerModel>(_testBeerObj))
+                .Returns(
+                    new BeerModel()
+                    {
+                        Id = testBeerObj.Id,
+                        Name = testBeerObj.Name,
+                        PercentageAlcoholByVolume = testBeerObj.PercentageAlcoholByVolume
+                    }
+                );
+
+            var actual_beer_responce = beerController.GetBeer(_testBeerObj.Id);
+            var expected_responce = new BeerResponceModel()
+            {
+                beerModel = null,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+            };
+
+            //Assert.Throws<ArgumentException>(() => beerController.GetBeer(_testBeerObj.Id));
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+        }
+
     }
 }
 

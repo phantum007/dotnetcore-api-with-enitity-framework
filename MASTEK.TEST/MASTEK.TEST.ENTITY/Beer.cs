@@ -16,7 +16,7 @@ public partial class Beer
 
     public double? PercentageAlcoholByVolume { get; set; }
 
-    //public int? BreweryId { get; set; }
+    public virtual ICollection<BarBeersMapping> BarBeersMappings { get; set; } = new List<BarBeersMapping>();
 
-    //public virtual Brewery? Brewery { get; set; }
+    public virtual ICollection<BreweryBeersMapping> BreweryBeersMappings { get; set; } = new List<BreweryBeersMapping>();
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using MASTEK.TEST.ENTITY;
 
 namespace MASTEK.TEST.API.Models;
@@ -7,6 +8,7 @@ public partial class BreweryModel
 {
     public int Id { get; set; }
 
+    [Required(ErrorMessage = "Address cannot be empty")]
     public string? Name { get; set; }
 }
 

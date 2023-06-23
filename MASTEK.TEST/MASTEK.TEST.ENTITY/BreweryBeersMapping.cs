@@ -9,9 +9,11 @@ namespace MASTEK.TEST.ENTITY
 
         public bool? Isdeleted { get; set; }
 
+        public uint Id { get; set; }
+
         public virtual Beer? Beer { get; set; }
 
-        public virtual Bar? Brewery { get; set; }
+        public virtual Brewery? Brewery { get; set; }
     }
 }
 

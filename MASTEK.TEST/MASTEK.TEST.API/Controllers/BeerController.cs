@@ -5,11 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using AutoMapper;
 using MASTEK.TEST.API.Models;
+using MASTEK.TEST.API.ExceptionClaases;
+using System.Net;
+//using System.Net.Http;
+//using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MASTEK.TEST.API.Controllers;
 
 [ApiController]
-//[Route("[controller]")]
 public class BeerController : ControllerBase
 {
 
@@ -29,10 +32,22 @@ public class BeerController : ControllerBase
    
 
     [HttpGet("beer/{id:int}")]
-    public BeerModel GetBeer(int Id)
+    public BeerResponceModel GetBeer(int Id)
     {
-        var response = _mapper.Map<Beer, BeerModel>(_beerservice.GetBeer(Id));
-          return response;
+        try
+        {
+            if (Id == 0)
+            {
+                return new BeerResponceModel() { errorDetails  = new InvalidInputExceptions( "Invalid Input Value for Id") };
+            }
+            var response = _mapper.Map<Beer, BeerModel>(_beerservice.GetBeer(Id));
+            return new BeerResponceModel() { beerModel=response};
+        }
+        catch (Exception ex)
+        {
+            return new BeerResponceModel() { errorDetails = ex };
+        }
+       
     }
 
     [HttpGet("beer")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using MASTEK.TEST.ENTITY;
 
 namespace MASTEK.TEST.API.Models;
@@ -8,8 +9,10 @@ public partial class BarModel
 {
     public int Id { get; set; }
 
+    [Required(ErrorMessage = "Name cannot be empty")]
     public string? Name { get; set; }
 
+    [Required(ErrorMessage = "Address cannot be empty")]
     public string? Address { get; set; }
 }
 
@@ -26,3 +29,7 @@ public partial class BarBeersMappingModel
 
     public bool? Isdeleted { get; set; }
 }
+
+
+
+

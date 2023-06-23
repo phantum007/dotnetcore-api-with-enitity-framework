@@ -25,13 +25,10 @@ namespace MASTEK.TEST.DAL
             return context.Breweries.Find(Id);
         }
 
-      
         public IEnumerable<Brewery> GetBreweries()
         {
            return context.Breweries;
         }
-
-     
 
         public bool PostBrewery(Brewery Brewery)
         {
@@ -47,25 +44,6 @@ namespace MASTEK.TEST.DAL
             context.SaveChanges();
             return true;
         }
-
-        //public Brewery GetBreweryByIdWithBeer(int Id)
-        //{
-        //    var brewery = context.Breweries.Find(Id);
-        //    brewery.Beers = (new Beerservice()).GetBeerByBreweryId(brewery.Id).ToList();
-        //    return brewery;
-        //}
-
-        //public IEnumerable<Brewery> GetAllBreweriesWithBeer()
-        //{
-        //    var breweries = context.Breweries;
-        //    foreach (var item in breweries)
-        //    {
-        //        //item.Beers = context.Beers.Where(x=>x.BreweryId==item.Id).ToList;
-        //        item.Beers = (new Beerservice()).GetBeerByBreweryId(item.Id).ToList();
-
-        //    }
-        //    return breweries;
-        //}
 
         public IEnumerable<Beer> GetAllBeerWithBarid(int Id)
         {

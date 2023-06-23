@@ -15,4 +15,6 @@ public partial class Bar
     public string? Name { get; set; }
 
     public string? Address { get; set; }
+
+    public virtual ICollection<BarBeersMapping> BarBeersMappings { get; set; } = new List<BarBeersMapping>();
 }

@@ -10,5 +10,6 @@ public partial class Brewery
 
     public string? Name { get; set; }
 
+    public virtual ICollection<BreweryBeersMapping> BreweryBeersMappings { get; set; } = new List<BreweryBeersMapping>();
     //public virtual ICollection<Beer> Beers { get; set; } = new List<Beer>();
 }

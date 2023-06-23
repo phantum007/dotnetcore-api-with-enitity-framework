@@ -11,6 +11,8 @@ public partial class BarBeersMapping
 
     public bool? Isdeleted { get; set; }
 
+    public uint Id { get; set; }
+
     public virtual Bar? Bar { get; set; }
 
     public virtual Beer? Beer { get; set; }

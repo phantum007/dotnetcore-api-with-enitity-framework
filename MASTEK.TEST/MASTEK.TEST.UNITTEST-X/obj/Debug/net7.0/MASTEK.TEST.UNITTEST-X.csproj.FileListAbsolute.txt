@@ -1,4 +1,9 @@
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/CoverletSourceRootsMapping
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.csproj.AssemblyReference.cache
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.AssemblyInfoInputs.cache
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.AssemblyInfo.cs
+/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.csproj.CoreCompileInputs.cache
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/MASTEK.TEST.API.deps.json
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/MASTEK.TEST.API.runtimeconfig.json
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/appsettings.Development.json
@@ -132,11 +137,6 @@
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/MASTEK.TEST.API.pdb
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/MASTEK.TEST.DAL.pdb
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/bin/Debug/net7.0/MASTEK.TEST.ENTITY.pdb
-/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.csproj.AssemblyReference.cache
-/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.GeneratedMSBuildEditorConfig.editorconfig
-/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.AssemblyInfoInputs.cache
-/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.AssemblyInfo.cs
-/Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.csproj.CoreCompileInputs.cache
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.csproj.CopyComplete
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/MASTEK.TEST.UNITTEST-X.dll
 /Volumes/Personal/Test/dotnetcore-api-with-enitity-framework/MASTEK.TEST/MASTEK.TEST.UNITTEST-X/obj/Debug/net7.0/refint/MASTEK.TEST.UNITTEST-X.dll
