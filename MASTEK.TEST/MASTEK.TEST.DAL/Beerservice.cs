@@ -52,6 +52,10 @@ namespace MASTEK.TEST.DAL
         public bool PutBeer(Beer beer)
         {
             var entity = GetBeer(beer.Id);
+            if (entity == null)
+            {
+                throw new NullReferenceException("Object not exist");
+            }
             context.Entry(entity).CurrentValues.SetValues(beer);
             context.SaveChanges();
             return true;

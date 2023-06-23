@@ -17,21 +17,13 @@ public class BeerModel
 }
 
 
-public class BeerResponceModel
+public class BeerResponseModel:ErrorResponse
 {
     public BeerModel beerModel { get; set; }
-    public Exception errorDetails { get; set; }
 }
 
-public class BeerListResponceModel
+public class BeerListResponseModel:ErrorResponse
 {
     public IEnumerable<BeerModel> beersModel { get; set; }
-    public Exception errorDetails { get; set; }
-
 }
 
-public class BeerUpdateResponceModel
-{
-    public bool updateStatus { get; set; }
-    public Exception errorDetails { get; set; }
-}

@@ -64,6 +64,10 @@ namespace MASTEK.TEST.DAL
             return true;
         }
 
+        public bool IsExist(Bar bar)
+        {
+            return context.Bars.Any(b => b.Name == bar.Name && b.Address == bar.Address && b.Id != bar.Id);
+        }
     }
 }
 

@@ -36,9 +36,9 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
 
         BeerModel testBeerModeelObj = new BeerModel()
         {
-            Id = 100,
-            Name = "mock_beer_name",
-            PercentageAlcoholByVolume = 4
+            Id = 2,
+            Name = "mock_beer_names",
+            PercentageAlcoholByVolume = 5
         };
 
         List<Beer> testBeerlistObj = new List<Beer>() {
@@ -76,7 +76,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
 
             var actual_beer_responce = beerController.GetBeer(beerId);
 
-            var expected_responce = new BeerResponceModel()
+            var expected_responce = new BeerResponseModel()
             {
                 beerModel = new BeerModel()
                 {
@@ -111,7 +111,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
                 );
 
             var actual_beer_responce = beerController.GetBeer(_testBeerObj.Id);
-            var expected_responce = new BeerResponceModel()
+            var expected_responce = new BeerResponseModel()
             {
                 beerModel = null,
                 errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
@@ -155,7 +155,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
 
             var actual_beer_responce = beerController.GetBeer(gtAlcoholByVolume, ltAlcoholByVolume);
 
-            var expected_responce = new BeerListResponceModel()
+            var expected_responce = new BeerListResponseModel()
             {
                 beersModel = new List<BeerModel>()
                     {
@@ -209,7 +209,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
                     );
 
             var actual_beer_responce = beerController.GetBeer(gtAlcoholByVolume, ltAlcoholByVolume);
-            var expected_responce = new BeerListResponceModel()
+            var expected_responce = new BeerListResponseModel()
             {
                 beersModel = null,
                 errorDetails = new InvalidInputExceptions("Invalid Input Value for gtAlcoholByVolume")
@@ -248,7 +248,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
                     );
 
             var actual_beer_responce = beerController.GetBeer(gtAlcoholByVolume, ltAlcoholByVolume);
-            var expected_responce = new BeerListResponceModel()
+            var expected_responce = new BeerListResponseModel()
             {
                 beersModel = null,
                 errorDetails = new InvalidInputExceptions("Invalid Input Value for ltAlcoholByVolume")
@@ -288,7 +288,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
                     );
 
             var actual_beer_responce = beerController.GetBeer(gtAlcoholByVolume, ltAlcoholByVolume);
-            var expected_responce = new BeerListResponceModel()
+            var expected_responce = new BeerListResponseModel()
             {
                 beersModel = null,
                 errorDetails = new InvalidInputExceptions("Invalid Input Value : ltAlcoholByVolume can not be same as gtAlcoholByVolume")
@@ -300,31 +300,33 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
 
         //End GetBeer
 
-
+        #region UpdateBeer
 
         [Fact]
         public void UpdateBeer_good_flow()
         {
             //arrange
-            var _testBeerObj = testBeerObj;
 
-            _beerservice.Setup(x => x.PutBeer(_testBeerObj)).Returns(true);
+            var _tmpbeerobj = new Beer()
+            {
+                Id = testBeerModeelObj.Id,
+                Name = testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PutBeer(_tmpbeerobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BeerModel, Beer>(testBeerModeelObj))
-                .Returns(
-                    new Beer()
-                    {
-                        Id = testBeerObj.Id,
-                        Name = testBeerObj.Name,
-                        PercentageAlcoholByVolume = testBeerObj.PercentageAlcoholByVolume
-                    }
+                .Returns(_tmpbeerobj
                 );
 
             var actual_beer_responce = beerController.UpdateBeer(testBeerModeelObj);
 
-            var expected_responce = new BeerUpdateResponceModel()
+
+
+            var expected_responce = new CreateUpdateResponseModel()
             {
-                updateStatus=true,
+                status = true,
                 errorDetails = null
             };
 
@@ -333,6 +335,288 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
             //	asser
         }
 
+        [Fact]
+        public void UpdateBeer_duplicate_name()
+        {
+            //arrange
+
+            var _tmpbeerobj = new Beer()
+            {
+                Id = testBeerModeelObj.Id,
+                Name = testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PutBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.UpdateBeer(testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("one beer already exist with this name and volume")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void UpdateBeer_wrong_id()
+        {
+            //arrange
+
+            var _testBeerModeelObj = testBeerModeelObj;
+            _testBeerModeelObj.Id = 0;
+            var _tmpbeerobj = new Beer()
+            {
+                Id = _testBeerModeelObj.Id,
+                Name = _testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = _testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PutBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(_testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.UpdateBeer(_testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for beer")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void UpdateBeer_without_name()
+        {
+            //arrange
+
+            var _testBeerModeelObj = testBeerModeelObj;
+            _testBeerModeelObj.Name = null;
+            var _tmpbeerobj = new Beer()
+            {
+                Id = _testBeerModeelObj.Id,
+                Name = _testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = _testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PutBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(_testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.UpdateBeer(_testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for beer")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void UpdateBeer_wrong_percentageAlcoholByVolume()
+        {
+            //arrange
+
+            var _testBeerModeelObj = testBeerModeelObj;
+            _testBeerModeelObj.PercentageAlcoholByVolume = 200;
+            var _tmpbeerobj = new Beer()
+            {
+                Id = _testBeerModeelObj.Id,
+                Name = _testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = _testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PutBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(_testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.UpdateBeer(_testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for beer")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+        #endregion
+
+        #region CreateBeer
+
+        [Fact]
+        public void CreateBeer_good_flow()
+        {
+            //arrange
+
+            var _tmpbeerobj = new Beer()
+            {
+                Name = testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PostBeer(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.CreateBeer(testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = true,
+                errorDetails = null
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void CreateBeer_duplicate_name()
+        {
+            //arrange
+
+            var _tmpbeerobj = new Beer()
+            {
+                Name = testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PostBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.CreateBeer(testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("one beer already exist with this name and volume")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+
+        [Fact]
+        public void CreateBeer_without_name()
+        {
+            //arrange
+
+            var _testBeerModeelObj = testBeerModeelObj;
+            _testBeerModeelObj.Name = null;
+            var _tmpbeerobj = new Beer()
+            {
+                Id = _testBeerModeelObj.Id,
+                Name = _testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = _testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PostBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(_testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.CreateBeer(_testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for beer")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void CreateBeer_wrong_percentageAlcoholByVolume()
+        {
+            //arrange
+
+            var _testBeerModeelObj = testBeerModeelObj;
+            _testBeerModeelObj.PercentageAlcoholByVolume = 200;
+            var _tmpbeerobj = new Beer()
+            {
+                Name = _testBeerModeelObj.Name,
+                PercentageAlcoholByVolume = _testBeerModeelObj.PercentageAlcoholByVolume
+            };
+
+            _beerservice.Setup(x => x.PostBeer(_tmpbeerobj)).Returns(true);
+            _beerservice.Setup(x => x.IsExist(_tmpbeerobj)).Returns(true);
+
+            _mapper.Setup(x => x.Map<BeerModel, Beer>(_testBeerModeelObj))
+                .Returns(_tmpbeerobj
+                );
+
+            var actual_beer_responce = beerController.CreateBeer(_testBeerModeelObj);
+
+
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for beer")
+            };
+
+            Assert.Equivalent(actual_beer_responce, expected_responce);
+            //	act
+            //	asser
+        }
+        #endregion
 
     }
 }

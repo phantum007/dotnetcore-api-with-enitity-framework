@@ -7,6 +7,7 @@ using AutoMapper;
 using MASTEK.TEST.API.Models;
 using MASTEK.TEST.API.ExceptionClaases;
 using System.Net;
+using System.Data;
 //using System.Net.Http;
 //using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -32,52 +33,66 @@ public class BeerController : ControllerBase
    
 
     [HttpGet("beer/{id:int}")]
-    public BeerResponceModel GetBeer(int Id)
+    public BeerResponseModel GetBeer(int Id)
     {
             if (Id == 0)
             {
-                return new BeerResponceModel() { errorDetails  = new InvalidInputExceptions( "Invalid Input Value for Id") };
+                return new BeerResponseModel() { errorDetails  = new InvalidInputExceptions( "Invalid Input Value for Id") };
             }
             var response = _mapper.Map<Beer, BeerModel>(_beerservice.GetBeer(Id));
-            return new BeerResponceModel() { beerModel=response};
+            return new BeerResponseModel() { beerModel=response};
     }
 
     [HttpGet("beer")]
-    public BeerListResponceModel GetBeer( double? gtAlcoholByVolume=0, double? ltAlcoholByVolume=100)
+    public BeerListResponseModel GetBeer( double? gtAlcoholByVolume=0, double? ltAlcoholByVolume=100)
     {
         if (gtAlcoholByVolume >= 100)
         {
-            return new BeerListResponceModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for gtAlcoholByVolume") };
+            return new BeerListResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for gtAlcoholByVolume") };
         }
         if (ltAlcoholByVolume <= 0)
         {
-            return new BeerListResponceModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for ltAlcoholByVolume") };
+            return new BeerListResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for ltAlcoholByVolume") };
         }
         if (ltAlcoholByVolume == gtAlcoholByVolume)
         {
-            return new BeerListResponceModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value : ltAlcoholByVolume can not be same as gtAlcoholByVolume") };
+            return new BeerListResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value : ltAlcoholByVolume can not be same as gtAlcoholByVolume") };
         }
         var response = _mapper.Map<IEnumerable<Beer>, IEnumerable< BeerModel> >(_beerservice.GetBeer(gtAlcoholByVolume, ltAlcoholByVolume));
-         return new BeerListResponceModel() { beersModel=response};
+         return new BeerListResponseModel() { beersModel=response};
     }
 
     [HttpPut("beer")]
-    public BeerUpdateResponceModel UpdateBeer(BeerModel beermodel)
+    public CreateUpdateResponseModel UpdateBeer(BeerModel beermodel)
     {
         var beer = _mapper.Map<BeerModel, Beer>(beermodel);
 
+        if (beermodel.Id == 0 || beermodel.Name == null || beermodel.PercentageAlcoholByVolume < 0 || beermodel.PercentageAlcoholByVolume > 100)
+        {
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for beer") };
+        }
         if (_beerservice.IsExist(beer))
         {
-            return new BeerUpdateResponceModel() { errorDetails = new InvalidInputExceptions("one beer already exist with this name and volume") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one beer already exist with this name and volume") };
         }
-        return new BeerUpdateResponceModel() { updateStatus = _beerservice.PutBeer(beer) };
+
+        return new CreateUpdateResponseModel() { status = _beerservice.PutBeer(beer) };
     }
 
     [HttpPost("beer")]
-    public bool CreateBeer(BeerModel beermodel)
+    public CreateUpdateResponseModel CreateBeer(BeerModel beermodel)
     {
         var beer = _mapper.Map<BeerModel, Beer>(beermodel);
-        return _beerservice.PostBeer(beer);
+
+        if (beermodel.Name == null || beermodel.PercentageAlcoholByVolume < 0 || beermodel.PercentageAlcoholByVolume > 100)
+        {
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for beer") };
+        }
+        if (_beerservice.IsExist(beer))
+        {
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one beer already exist with this name and volume") };
+        }
+        return new CreateUpdateResponseModel() { status = _beerservice.PostBeer(beer) };
     }
 }
 

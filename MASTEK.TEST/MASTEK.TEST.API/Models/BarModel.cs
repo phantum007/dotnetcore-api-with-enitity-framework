@@ -31,5 +31,24 @@ public partial class BarBeersMappingModel
 }
 
 
+public class BarResponseModel:ErrorResponse
+{
+    public BarModel barModel { get; set; }
+}
 
 
+public class BarListResponseModel:ErrorResponse
+{
+    public IEnumerable<BarModel> barsModel { get; set; }
+}
+
+
+public class BarWithBeerResponseModel : ErrorResponse
+{
+    public BarWithBeerModel barWithBeerModel { get; set; }
+}
+
+public  class BarWithBeerListResponseModel : BarResponseModel
+{
+    public IEnumerable<BarWithBeerModel> barWithBeerModel { get; set; }
+}
