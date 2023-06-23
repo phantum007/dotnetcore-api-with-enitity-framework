@@ -9,5 +9,6 @@ namespace MASTEK.TEST.DAL
         IEnumerable<Beer> GetBeer(double? gtAlcoholByVolume, double? ltAlcoholByVolume);
         bool PutBeer(Beer Id);
         bool PostBeer(Beer beer);
+        bool IsExist(Beer beer);
     }
 }
