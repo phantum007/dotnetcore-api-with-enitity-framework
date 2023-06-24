@@ -48,7 +48,7 @@ public class BarWithBeerResponseModel : ErrorResponse
     public BarWithBeerModel barWithBeerModel { get; set; }
 }
 
-public  class BarWithBeerListResponseModel : BarResponseModel
+public  class BarWithBeerListResponseModel : ErrorResponse
 {
     public IEnumerable<BarWithBeerModel> barWithBeerModel { get; set; }
 }

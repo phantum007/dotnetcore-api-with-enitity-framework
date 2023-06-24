@@ -105,7 +105,7 @@ public BarWithBeerResponseModel GetBarWithBeer(int Id)
 }
 
 [HttpGet("beer")]
-public BarWithBeerListResponseModel GetAllBreweriesWithBeer()
+public BarWithBeerListResponseModel GetAllBarsWithBeer()
 {
     var bars = _barservice.GetBar();
     if (bars == null)

@@ -54,6 +54,25 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
             }
         };
 
+        List<Beer> testBeerlistObj = new List<Beer>() {
+                new Beer() {
+                 Id = 100,
+                 Name = "mock_beer_name",
+                 PercentageAlcoholByVolume = 4
+            },
+                new Beer() {
+                 Id = 100,
+                 Name = "mock_beer_name",
+                 PercentageAlcoholByVolume = 4
+            }
+        };
+
+        BarBeersMappingModel barBeersMappingModel = new BarBeersMappingModel()
+        {
+            BarId = 1,
+            BeerId = 2
+        };
+
         #region GetBarWithId
 
         [Fact]
@@ -502,6 +521,301 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
         }
         #endregion
 
+        #region GetBarnBeerbyId
+
+        [Fact]
+        public void GetBarWithBeer_with_id_good_flow()
+        {
+            //arrange
+            var BarId = testBarObj.Id;
+            var tmpBarObjModel = new List<BeerModel>()
+            {
+                new BeerModel()
+                {
+                    Id = testBeerlistObj[0].Id,
+                    Name = testBeerlistObj[0].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[0].PercentageAlcoholByVolume
+                },
+                new BeerModel()
+                {
+                    Id = testBeerlistObj[1].Id,
+                    Name = testBeerlistObj[1].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[1].PercentageAlcoholByVolume
+                }
+            };
+            var tmpBar = new BarWithBeerModel()
+            {
+                Id = testBarObj.Id,
+                Name = testBarObj.Name,
+                Address = testBarObj.Address
+            };
+            _barservice.Setup(x => x.GetBar(BarId)).Returns(testBarObj);
+
+            _mapper.Setup(x => x.Map<Bar, BarWithBeerModel>(testBarObj)).Returns( tmpBar );
+
+            _barservice.Setup(x => x.GetAllBeerWithBarid(BarId)).Returns(testBeerlistObj);
+
+            _mapper.Setup(x => x.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(testBeerlistObj)).Returns(tmpBarObjModel);
+
+            var actual_Bar_responce = barController.GetBarWithBeer(BarId);
+
+            var expected_responce = new BarWithBeerResponseModel()
+            {
+                barWithBeerModel = new BarWithBeerModel()
+                {
+                    Id = testBarObj.Id,
+                    Name = testBarObj.Name,
+                    Address = testBarObj.Address,
+                    Beers= tmpBarObjModel
+                },
+                errorDetails = null
+            };
+
+        Assert.Equivalent(actual_Bar_responce, expected_responce);
+        //	act
+        //	asser
+    }
+
+        [Fact]
+        public void GetBarWithBeer_with_id_wrong_id()
+        {
+            var BarId = 0;
+            //arrange
+
+            var actual_Bar_responce = barController.GetBarWithBeer(BarId);
+
+            var expected_responce = new BarWithBeerResponseModel()
+            {
+                barWithBeerModel = null,
+                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void GetBarWithBeer_with_no_bar_found()
+        {
+            //arrange
+            var BarId = testBarObj.Id;
+            var tmpnull = testBarObj;
+            tmpnull = null;
+            _barservice.Setup(x => x.GetBar(BarId)).Returns(tmpnull);
+
+            var actual_Bar_responce = barController.GetBarWithBeer(BarId);
+
+            var expected_responce = new BarWithBeerResponseModel()
+            {
+                barWithBeerModel = null,
+                errorDetails = new InvalidInputExceptions("No bar found")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        #endregion
+
+        #region GetAllBarnBeerbyId
+
+        [Fact]
+        public void GetAllBarsWithBeer_with_id_good_flow()
+        {
+            //arrange
+            var tmptestBarlistObj = testBarlistObj;
+
+            var tmpBeerListObjModel = new List<BeerModel>()
+            {
+                new BeerModel()
+                {
+                    Id = tmptestBarlistObj[0].Id,
+                    Name = testBeerlistObj[0].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[0].PercentageAlcoholByVolume
+                },
+                new BeerModel()
+                {
+                    Id = testBeerlistObj[1].Id,
+                    Name = testBeerlistObj[1].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[1].PercentageAlcoholByVolume
+                }
+            };
+            var tmpBeerBar = new BarWithBeerModel()
+            {
+                Id = testBarObj.Id,
+                Name = testBarObj.Name,
+                Address = testBarObj.Address
+            };
+            var tmpBarObjModel = new List<BeerModel>()
+            {
+                new BeerModel()
+                {
+                    Id = testBeerlistObj[0].Id,
+                    Name = testBeerlistObj[0].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[0].PercentageAlcoholByVolume
+                },
+                new BeerModel()
+                {
+                    Id = testBeerlistObj[1].Id,
+                    Name = testBeerlistObj[1].Name,
+                    PercentageAlcoholByVolume = testBeerlistObj[1].PercentageAlcoholByVolume
+                }
+            };
+            var tmpBarWithBeerModel = new List<BarWithBeerModel>()
+                    {
+                        new  BarWithBeerModel()
+                        {
+                        Id = tmptestBarlistObj[0].Id,
+                        Name = tmptestBarlistObj[0].Name,
+                        Address = tmptestBarlistObj[0].Address
+                        },
+                         new  BarWithBeerModel()
+                        {
+                        Id = testBarlistObj[1].Id,
+                        Name = testBarlistObj[1].Name,
+                        Address = testBarlistObj[1].Address
+                        }
+                    };
+
+            _barservice.Setup(x => x.GetBar()).Returns(tmptestBarlistObj);
+
+            _mapper.Setup(x => x.Map<IEnumerable<Bar>, IEnumerable<BarWithBeerModel>>(tmptestBarlistObj)).Returns(tmpBarWithBeerModel);
+
+            foreach (var item in tmpBarWithBeerModel)
+            {
+              _barservice.Setup(x => x.GetAllBeerWithBarid(item.Id)).Returns(testBeerlistObj);
+              _mapper.Setup(x => x.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(testBeerlistObj)).Returns(tmpBarObjModel);
+                item.Beers = tmpBarObjModel;
+            }
+
+
+            var actual_Bar_responce = barController.GetAllBarsWithBeer();
+
+            var expected_responce = new BarWithBeerListResponseModel()
+            {
+                barWithBeerModel = tmpBarWithBeerModel,
+                errorDetails = null
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        [Fact]
+        public void GetAllBarsWithBeer_with_no_bar_found()
+        {
+            //arrange
+            var tmpnull = testBarlistObj;
+            tmpnull = null;
+            _barservice.Setup(x => x.GetBar()).Returns(tmpnull);
+
+            var actual_Bar_responce = barController.GetAllBarsWithBeer();
+
+            var expected_responce = new BarWithBeerResponseModel()
+            {
+                barWithBeerModel = null,
+                errorDetails = new InvalidInputExceptions("No bars found")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+        #endregion
+
+        #region UpdateBarbeerModel
+
+        [Fact]
+        public void UpdateBarbeerModel_good_flow()
+        {
+            //arrange
+            var _tmpBarobj = new BarBeersMapping()
+            {
+                BarId = barBeersMappingModel.BarId,
+                BeerId = barBeersMappingModel.BeerId
+            };
+
+            _mapper.Setup(x => x.Map<BarBeersMappingModel, BarBeersMapping>(barBeersMappingModel)).Returns(_tmpBarobj);
+
+            _barservice.Setup(x => x.UpdateBarbeerModel(_tmpBarobj)).Returns(true);
+
+            var actual_Bar_responce = barController.UpdateBarbeerModel(barBeersMappingModel);
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = true,
+                errorDetails = null
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+            //	act
+            //	asser
+        }
+
+       
+
+        [Fact]
+        public void UpdateBarbeerModel_with_wrong_beer_id()
+        {
+            //arrange
+
+            var _barBeersMappingModel = barBeersMappingModel;
+            _barBeersMappingModel.BeerId = 0;
+
+            var actual_Bar_responce = barController.UpdateBarbeerModel(_barBeersMappingModel);
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid input param")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+        }
+
+        [Fact]
+        public void UpdateBarbeerModel_with_wrong_bar_id()
+        {
+            //arrange
+
+            var _barBeersMappingModel = barBeersMappingModel;
+            _barBeersMappingModel.BarId = 0;
+
+            var actual_Bar_responce = barController.UpdateBarbeerModel(_barBeersMappingModel);
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid input param")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+        }
+
+        [Fact]
+        public void UpdateBarbeerModel_with_null_param()
+        {
+            //arrange
+
+            var _barBeersMappingModel = barBeersMappingModel;
+            _barBeersMappingModel = null;
+
+            var actual_Bar_responce = barController.UpdateBarbeerModel(_barBeersMappingModel);
+
+            var expected_responce = new CreateUpdateResponseModel()
+            {
+                status = false,
+                errorDetails = new InvalidInputExceptions("Invalid input param")
+            };
+
+            Assert.Equivalent(actual_Bar_responce, expected_responce);
+        }
+
+        #endregion
     }
 }
 
