@@ -652,7 +652,8 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
             var _tmpBreweryobj = new BreweryBeersMapping()
             {
                 BreweryId = breweryBeersMappingModel.BreweryId,
-                BeerId = breweryBeersMappingModel.BeerId
+                BeerId = breweryBeersMappingModel.BeerId,
+                Id=0
             };
 
             _mapper.Setup(x => x.Map<BreweryBeerMappingModel, BreweryBeersMapping>(breweryBeersMappingModel)).Returns(_tmpBreweryobj);
