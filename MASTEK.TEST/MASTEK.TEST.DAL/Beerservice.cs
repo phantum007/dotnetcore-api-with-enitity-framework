@@ -20,17 +20,16 @@ namespace MASTEK.TEST.DAL
             var context = new TestMastekDbContext();
         }
 
-        public TestMastekDbContext GetContext()
-        {
-            return context;
-        }
+        //public TestMastekDbContext GetContext()
+        //{
+        //    return context;
+        //}
 
         public Beer GetBeer(int Id)
         {
             return context.Beers.Find(Id);
         }
 
-      
         public IEnumerable<Beer> GetBeer(double? gtAlcoholByVolume, double? ltAlcoholByVolume)
         {
            return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume &&  b.PercentageAlcoholByVolume < ltAlcoholByVolume);

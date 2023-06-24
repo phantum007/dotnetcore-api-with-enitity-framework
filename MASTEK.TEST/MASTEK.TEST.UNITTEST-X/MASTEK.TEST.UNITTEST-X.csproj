@@ -26,9 +26,11 @@
 
   <ItemGroup>
     <None Remove="Controllers\" />
+    <None Remove="SERVICES\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="SERVICES\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MASTEK.TEST.API\MASTEK.TEST.API.csproj" />
