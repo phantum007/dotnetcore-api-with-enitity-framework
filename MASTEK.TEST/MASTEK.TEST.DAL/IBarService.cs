@@ -3,7 +3,7 @@ using MASTEK.TEST.ENTITY;
 
 namespace MASTEK.TEST.DAL
 {
-	public interface IBarService
+	public interface IBarService<T>
     {
         Bar GetBar(int Id);
         IEnumerable<Bar> GetBar();

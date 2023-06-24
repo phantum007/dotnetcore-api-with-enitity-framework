@@ -3,7 +3,7 @@ using MASTEK.TEST.ENTITY;
 
 namespace MASTEK.TEST.DAL
 {
-	public interface IBeerservice
+	public interface IBeerservice<T>
     {
         Beer GetBeer(int Id);
         IEnumerable<Beer> GetBeer(double? gtAlcoholByVolume, double? ltAlcoholByVolume);

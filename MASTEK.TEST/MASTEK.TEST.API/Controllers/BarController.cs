@@ -14,12 +14,12 @@ public class BarController : ControllerBase
 {
 
 
-private readonly IBarService _barservice;
+private readonly IBarService<TestMastekDbContext> _barservice;
 private readonly ILogger<BarController> _logger;
 private readonly IMapper _mapper;
 
 
-public BarController(ILogger<BarController> logger, IBarService Barservice, IMapper mapper)
+public BarController(ILogger<BarController> logger, IBarService<TestMastekDbContext> Barservice, IMapper mapper)
 {
     _logger = logger;
     _barservice = Barservice;

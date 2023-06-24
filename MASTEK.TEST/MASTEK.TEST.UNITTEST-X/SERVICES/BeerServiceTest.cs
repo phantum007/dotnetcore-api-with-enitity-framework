@@ -11,13 +11,16 @@ namespace MASTEK.TEST.UNITTEST_X.SERVICES
 {
     public class BeerserviceTest
     {
-        private readonly Beerservice beerservice;
+        private readonly Beerservice<TestMastekDbContext> _beerservice;
         private readonly Mock<TestMastekDbContext> context;
+        //private readonly Beerservice _somethingFactory;
 
-        public BeerserviceTest()
+        public BeerserviceTest(Beerservice<TestMastekDbContext> beerservice)
         {
-            beerservice = new Beerservice();
-            context = new Mock<TestMastekDbContext>();
+            _beerservice = beerservice;
+            //Beer beer = _beerservice.();
+            //int i = s.Run();
+            //context = new Mock<TestMastekDbContext>();
         }
 
         List<Beer> expectedBeers = new List<Beer>()
@@ -41,6 +44,7 @@ namespace MASTEK.TEST.UNITTEST_X.SERVICES
             Name = "corona",
             PercentageAlcoholByVolume = 4
         };
+
 
         //[Fact]
         //public void GetBeer_with_id_good_flow()

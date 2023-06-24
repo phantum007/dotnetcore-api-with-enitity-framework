@@ -12,20 +12,17 @@ namespace MASTEK.TEST.API.Controllers;
 [Route("[controller]")]
 public class BreweryController : ControllerBase
 {
-
-
-    private readonly IBreweryService _breweryService;
+    private readonly IBreweryService<TestMastekDbContext> _breweryService;
     private readonly ILogger<BreweryController> _logger;
     private readonly IMapper _mapper;
 
-    public BreweryController(ILogger<BreweryController> logger, IBreweryService breweryService, IMapper mapper)
+    public BreweryController(ILogger<BreweryController> logger, IBreweryService<TestMastekDbContext> breweryService, IMapper mapper)
 
     {
         _logger = logger;
         _breweryService = breweryService;
         _mapper = mapper;
     }
-
 
     #region Brewery
 
@@ -84,7 +81,6 @@ public class BreweryController : ControllerBase
 
     }
     #endregion
-
 
     #region Brewerybeer
 

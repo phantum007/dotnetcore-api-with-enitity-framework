@@ -9,18 +9,17 @@ using System.Reflection.Metadata;
 
 namespace MASTEK.TEST.DAL
 {
-    public class BarService : IBarService
+    public class BarService<T> : IBarService<T>
     {
 
-        TestMastekDbContext context = new TestMastekDbContext();
 
+        private readonly TestMastekDbContext context;
 
-        public BarService()
-		{
-            var context = new TestMastekDbContext();
+        public BarService(TestMastekDbContext testMastekDbContext)
+        {
+            context = testMastekDbContext;
         }
 
-       
 
         public Bar GetBar(int Id)
         {

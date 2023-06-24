@@ -16,7 +16,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
     {
         private  readonly BarController barController;
 
-        private readonly Mock<IBarService> _barservice = new Mock<IBarService>();
+        private readonly Mock<IBarService<TestMastekDbContext>> _barservice = new Mock<IBarService<TestMastekDbContext>>();
 		private readonly Mock<ILogger<BarController>> _logger = new Mock<ILogger<BarController>>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
 

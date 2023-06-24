@@ -9,16 +9,16 @@ using System.Reflection.Metadata;
 
 namespace MASTEK.TEST.DAL
 {
-    public class Beerservice: IBeerservice
+    public class Beerservice<T>: IBeerservice<T>
     {
 
-        TestMastekDbContext context = new TestMastekDbContext();
+        private readonly TestMastekDbContext context ;
 
 
-  //      public Beerservice()
-		//{
-  //          var context = new TestMastekDbContext();
-  //      }
+        public Beerservice(TestMastekDbContext testMastekDbContext)
+        {
+             context = testMastekDbContext;
+        }
 
         //public TestMastekDbContext GetContext()
         //{

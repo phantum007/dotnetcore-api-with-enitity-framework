@@ -7,14 +7,12 @@ namespace MASTEK.TEST.ENTITY;
 
 public partial class TestMastekDbContext : DbContext
 {
-    public TestMastekDbContext()
-    {
-    }
 
     public TestMastekDbContext(DbContextOptions<TestMastekDbContext> options)
-        : base(options)
+       : base(options)
     {
     }
+   
 
     public virtual DbSet<Bar> Bars { get; set; }
 
@@ -27,7 +25,6 @@ public partial class TestMastekDbContext : DbContext
     public virtual DbSet<BreweryBeersMapping> BreweryBeersMappings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySQL("server=104.198.178.39;port=3306;user=ef;password=Ef@2023;database=test-mastek-db;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

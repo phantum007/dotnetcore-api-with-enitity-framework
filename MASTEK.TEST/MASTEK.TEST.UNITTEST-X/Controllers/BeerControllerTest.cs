@@ -16,7 +16,7 @@ namespace MASTEK.TEST.UNITTEST_X.Controllers
 	{
         private  readonly BeerController beerController;
 
-        private readonly Mock<IBeerservice> _beerservice = new Mock<IBeerservice>();
+        private readonly Mock<IBeerservice<TestMastekDbContext>> _beerservice = new Mock<IBeerservice<TestMastekDbContext>>();
 		private readonly Mock<ILogger<BeerController>> _logger = new Mock<ILogger<BeerController>>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
 

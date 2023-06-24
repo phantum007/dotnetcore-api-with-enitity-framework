@@ -18,12 +18,12 @@ public class BeerController : ControllerBase
 {
 
 
-    private readonly IBeerservice _beerservice;
+    private readonly IBeerservice<TestMastekDbContext> _beerservice;
     private readonly ILogger<BeerController> _logger;
     private readonly IMapper _mapper;
 
 
-    public BeerController(ILogger<BeerController> logger, IBeerservice beerservice, IMapper mapper)
+    public BeerController(ILogger<BeerController> logger, IBeerservice<TestMastekDbContext> beerservice, IMapper mapper)
 
     {
         _logger = logger;
