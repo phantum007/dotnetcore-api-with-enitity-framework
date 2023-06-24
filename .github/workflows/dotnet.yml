@@ -40,7 +40,7 @@ jobs:
       uses: coverallsapp/github-action@master   
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }} 
-        path-to-lcov: FeatureFlags/FeatureFlags.Tests/TestResults/coverage.info 
+        path-to-lcov: MASTEK.TEST/MASTEK.TEST.UNITTEST-X/TestResults/coverage.info 
 
     # - name: Test Report
     #   uses: dorny/test-reporter@v1
