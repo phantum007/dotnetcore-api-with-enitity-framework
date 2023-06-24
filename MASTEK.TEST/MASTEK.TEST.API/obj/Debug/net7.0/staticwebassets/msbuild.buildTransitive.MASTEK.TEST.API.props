@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/MASTEK.TEST.API.props" />
-</Project>

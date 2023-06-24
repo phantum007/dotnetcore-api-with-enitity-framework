@@ -12,13 +12,13 @@ namespace MASTEK.TEST.DAL
     public class Beerservice: IBeerservice
     {
 
+        TestMastekDbContext context = new TestMastekDbContext();
 
-        private readonly TestMastekDbContext context;
 
-        public Beerservice()
-		{
-            context = new TestMastekDbContext();
-        }
+  //      public Beerservice()
+		//{
+  //          var context = new TestMastekDbContext();
+  //      }
 
         //public TestMastekDbContext GetContext()
         //{
@@ -30,6 +30,7 @@ namespace MASTEK.TEST.DAL
             return context.Beers.Find(Id);
         }
 
+      
         public IEnumerable<Beer> GetBeer(double? gtAlcoholByVolume, double? ltAlcoholByVolume)
         {
            return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume &&  b.PercentageAlcoholByVolume < ltAlcoholByVolume);

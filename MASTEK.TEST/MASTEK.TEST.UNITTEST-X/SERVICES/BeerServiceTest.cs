@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Xml.Linq;
 using MASTEK.TEST.API.Controllers;
 using MASTEK.TEST.DAL;
 using MASTEK.TEST.ENTITY;
+using Microsoft.EntityFrameworkCore;
 using Moq;
+using Moq.EntityFrameworkCore;
 
 namespace MASTEK.TEST.UNITTEST_X.SERVICES
 {
@@ -17,6 +20,21 @@ namespace MASTEK.TEST.UNITTEST_X.SERVICES
             context = new Mock<TestMastekDbContext>();
         }
 
+        List<Beer> expectedBeers = new List<Beer>()
+        {
+           new Beer() {
+                Id = 1,
+            Name = "corona",
+            PercentageAlcoholByVolume = 4
+        },
+           new Beer() {
+                Id = 2,
+            Name = "corona extra",
+            PercentageAlcoholByVolume = 4
+        }
+        };
+        
+
         Beer expectedBeer = new Beer()
         {
             Id = 1,
@@ -28,7 +46,10 @@ namespace MASTEK.TEST.UNITTEST_X.SERVICES
         public void GetBeer_with_id_good_flow()
         {
             var beerid = 1;
-            context.Setup(x => x.Beers.Find(beerid)).Returns(expectedBeer);
+
+            context.Setup<DbSet<Beer>>(x => x.Beers).ReturnsDbSet(expectedBeers);
+
+            //context.Setup(x => x.Beers.Find(beerid)).Returns(expectedBeer);
             var res = beerservice.GetBeer(beerid);
             Assert.Equivalent(expectedBeer, res);
         }
