@@ -7,7 +7,7 @@ namespace MASTEK.TEST.ENTITY
 
         public int? BeerId { get; set; }
 
-        public bool? Isdeleted { get; set; }
+        //public bool? Isdeleted { get; set; }
 
         public uint Id { get; set; }
 
