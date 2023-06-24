@@ -9,6 +9,7 @@ namespace MASTEK.TEST.DAL
         IEnumerable<Brewery> GetBreweries();
         bool PutBrewery(Brewery Id);
         bool PostBrewery(Brewery Brewery);
+        bool IsExist(Brewery brewery);
 
         IEnumerable<Beer> GetAllBeerWithBarid(int Id);
         Boolean UpdateBrewerybeerModel(BreweryBeersMapping bbm);

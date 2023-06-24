@@ -30,25 +30,25 @@ public partial class BarBeersMappingModel
     public bool? Isdeleted { get; set; }
 }
 
+#region ResponseModel
 
-public class BarResponseModel:ErrorResponse
+public class BarResponseModel : ErrorResponse
 {
     public BarModel barModel { get; set; }
 }
 
-
-public class BarListResponseModel:ErrorResponse
+public class BarListResponseModel : ErrorResponse
 {
     public IEnumerable<BarModel> barsModel { get; set; }
 }
-
 
 public class BarWithBeerResponseModel : ErrorResponse
 {
     public BarWithBeerModel barWithBeerModel { get; set; }
 }
 
-public  class BarWithBeerListResponseModel : ErrorResponse
+public class BarWithBeerListResponseModel : ErrorResponse
 {
     public IEnumerable<BarWithBeerModel> barWithBeerModel { get; set; }
 }
+#endregion

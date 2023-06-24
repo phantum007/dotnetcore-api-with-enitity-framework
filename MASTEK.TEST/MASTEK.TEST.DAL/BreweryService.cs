@@ -59,7 +59,10 @@ namespace MASTEK.TEST.DAL
             return true;
         }
 
-        
+        public bool IsExist(Brewery brewery)
+        {
+            return context.Breweries.Any(b => b.Name == brewery.Name  && b.Id != brewery.Id);
+        }
     }
 }
 

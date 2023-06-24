@@ -16,14 +16,17 @@ public class BeerModel
 
 }
 
+#region BeerResponseModel
 
-public class BeerResponseModel:ErrorResponse
+public class BeerResponseModel : ErrorResponse
 {
     public BeerModel beerModel { get; set; }
 }
 
-public class BeerListResponseModel:ErrorResponse
+public class BeerListResponseModel : ErrorResponse
 {
     public IEnumerable<BeerModel> beersModel { get; set; }
 }
 
+
+#endregion
