@@ -11,9 +11,9 @@ namespace MASTEK.TEST.ENTITY
 
         public uint Id { get; set; }
 
-        public virtual Beer? Beer { get; set; }
+        //public virtual Beer? Beer { get; set; }
 
-        public virtual Brewery? Brewery { get; set; }
+        //public virtual Brewery? Brewery { get; set; }
     }
 }
 

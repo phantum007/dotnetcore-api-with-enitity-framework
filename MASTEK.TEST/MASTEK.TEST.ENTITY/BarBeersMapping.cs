@@ -13,7 +13,7 @@ public partial class BarBeersMapping
 
     public uint Id { get; set; }
 
-    public virtual Bar? Bar { get; set; }
+    //public virtual Bar? Bar { get; set; }
 
-    public virtual Beer? Beer { get; set; }
+    //public virtual Beer? Beer { get; set; }
 }

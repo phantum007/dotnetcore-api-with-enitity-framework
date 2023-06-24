@@ -27,7 +27,7 @@ public partial class BarBeersMappingModel
 
     public int BeerId { get; set; }
 
-    public bool? Isdeleted { get; set; }
+    //public bool? Isdeleted { get; set; }
 }
 
 #region ResponseModel
