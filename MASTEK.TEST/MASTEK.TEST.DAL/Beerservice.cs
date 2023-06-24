@@ -12,12 +12,12 @@ namespace MASTEK.TEST.DAL
     public class Beerservice: IBeerservice
     {
 
-        TestMastekDbContext context = new TestMastekDbContext();
 
+        private readonly TestMastekDbContext context;
 
         public Beerservice()
 		{
-            var context = new TestMastekDbContext();
+            context = new TestMastekDbContext();
         }
 
         //public TestMastekDbContext GetContext()

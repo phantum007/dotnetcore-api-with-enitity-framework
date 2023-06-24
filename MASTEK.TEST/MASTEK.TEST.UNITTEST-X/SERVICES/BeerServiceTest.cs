@@ -30,7 +30,7 @@ namespace MASTEK.TEST.UNITTEST_X.SERVICES
             var beerid = 1;
             context.Setup(x => x.Beers.Find(beerid)).Returns(expectedBeer);
             var res = beerservice.GetBeer(beerid);
-            Assert.Equivalent(expectedBeer );
+            Assert.Equivalent(expectedBeer, res);
         }
 
         [Fact]

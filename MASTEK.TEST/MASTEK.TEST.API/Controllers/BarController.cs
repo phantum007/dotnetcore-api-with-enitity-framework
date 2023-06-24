@@ -20,7 +20,6 @@ private readonly IMapper _mapper;
 
 
 public BarController(ILogger<BarController> logger, IBarService Barservice, IMapper mapper)
-
 {
     _logger = logger;
     _barservice = Barservice;
