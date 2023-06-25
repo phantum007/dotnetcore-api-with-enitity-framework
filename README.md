@@ -1,1 +1,1 @@
-<a href='https://coveralls.io/github/phantum007/dotnetcore-api-with-enitity-framework?branch=master'><img src='https://coveralls.io/repos/github/phantum007/dotnetcore-api-with-enitity-framework/badge.svg?branch=master' alt='Coverage Status' /></a>
+[![Coverage Status](https://coveralls.io/repos/github/phantum007/dotnetcore-api-with-enitity-framework/badge.svg?branch=master)](https://coveralls.io/github/phantum007/dotnetcore-api-with-enitity-framework?branch=master)
