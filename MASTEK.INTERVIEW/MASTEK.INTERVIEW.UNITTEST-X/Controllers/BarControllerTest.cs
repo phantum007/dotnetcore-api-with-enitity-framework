@@ -1,12 +1,9 @@
-﻿using System;
-using System.Xml.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using MASTEK.INTERVIEW.API.Controllers;
 using MASTEK.INTERVIEW.API.ExceptionClaases;
 using MASTEK.INTERVIEW.API.Models;
 using MASTEK.INTERVIEW.DAL;
 using MASTEK.INTERVIEW.ENTITY;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -16,13 +13,13 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
     {
         private readonly BarController barController;
 
-        private readonly Mock<IBarService<TestMastekDbContext>> _barservice = new Mock<IBarService<TestMastekDbContext>>();
+        private readonly Mock<IBarService<TestMastekDbContext>> _barService = new Mock<IBarService<TestMastekDbContext>>();
         private readonly Mock<ILogger<BarController>> _logger = new Mock<ILogger<BarController>>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
 
         public BarControllerTest()
         {
-            barController = new BarController(_logger.Object, _barservice.Object, _mapper.Object);
+            barController = new BarController(_logger.Object, _barService.Object, _mapper.Object);
         }
 
         //Start GetBar
@@ -79,9 +76,9 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
         public void GetBar_with_id_good_flow()
         {
             //arrange
-            var BarId = 100;
+            var barId = 100;
 
-            _barservice.Setup(x => x.GetBar(BarId)).Returns(testBarObj);
+            _barService.Setup(x => x.GetBar(barId)).Returns(testBarObj);
 
             _mapper.Setup(x => x.Map<Bar, BarModel>(testBarObj))
                 .Returns(
@@ -93,7 +90,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                     }
                 );
 
-            var actual_Bar_responce = barController.GetBar(BarId);
+            var actual_Bar_responce = barController.GetBar(barId);
 
             var expected_responce = new BarResponseModel()
             {
@@ -117,7 +114,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var _testBarObj = testBarObj;
             _testBarObj.Id = 0;
 
-            _barservice.Setup(x => x.GetBar(_testBarObj.Id)).Returns(_testBarObj);
+            _barService.Setup(x => x.GetBar(_testBarObj.Id)).Returns(_testBarObj);
 
             _mapper.Setup(x => x.Map<Bar, BarModel>(_testBarObj))
                 .Returns(
@@ -151,7 +148,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             double gtAlcoholByVolume = 10;
             double ltAlcoholByVolume = 50;
 
-            _barservice.Setup(x => x.GetBar()).Returns(testBarlistObj);
+            _barService.Setup(x => x.GetBar()).Returns(testBarlistObj);
 
             _mapper.Setup(x => x.Map<IEnumerable<Bar>, IEnumerable<BarModel>>(testBarlistObj))
                 .Returns(
@@ -178,13 +175,13 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             {
                 barsModel = new List<BarModel>()
                     {
-                        new  BarModel()
+                      new  BarModel()
                         {
                         Id = testBarlistObj[0].Id,
                         Name = testBarlistObj[0].Name,
                         Address = testBarlistObj[0].Address
                         },
-                         new  BarModel()
+                      new  BarModel()
                         {
                         Id = testBarlistObj[1].Id,
                         Name = testBarlistObj[1].Name,
@@ -217,7 +214,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -250,8 +247,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -286,8 +283,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = _testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(_testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -322,8 +319,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = _testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(_testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -358,8 +355,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = _testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PutBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(_testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -394,7 +391,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -426,8 +423,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -463,8 +460,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = _testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(_testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -498,8 +495,8 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Address = _testBarModeelObj.Address
             };
 
-            _barservice.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
-            _barservice.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.PostBar(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.IsExist(_tmpBarobj)).Returns(true);
 
             _mapper.Setup(x => x.Map<BarModel, Bar>(_testBarModeelObj))
                 .Returns(_tmpBarobj
@@ -549,11 +546,11 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                 Name = testBarObj.Name,
                 Address = testBarObj.Address
             };
-            _barservice.Setup(x => x.GetBar(BarId)).Returns(testBarObj);
+            _barService.Setup(x => x.GetBar(BarId)).Returns(testBarObj);
 
             _mapper.Setup(x => x.Map<Bar, BarWithBeerModel>(testBarObj)).Returns(tmpBar);
 
-            _barservice.Setup(x => x.GetAllBeerWithBarid(BarId)).Returns(testBeerlistObj);
+            _barService.Setup(x => x.GetAllBeerWithBarid(BarId)).Returns(testBeerlistObj);
 
             _mapper.Setup(x => x.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(testBeerlistObj)).Returns(tmpBarObjModel);
 
@@ -602,7 +599,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var BarId = testBarObj.Id;
             var tmpnull = testBarObj;
             tmpnull = null;
-            _barservice.Setup(x => x.GetBar(BarId)).Returns(tmpnull);
+            _barService.Setup(x => x.GetBar(BarId)).Returns(tmpnull);
 
             var actual_Bar_responce = barController.GetBarWithBeer(BarId);
 
@@ -679,13 +676,13 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
                         }
                     };
 
-            _barservice.Setup(x => x.GetBar()).Returns(tmptestBarlistObj);
+            _barService.Setup(x => x.GetBar()).Returns(tmptestBarlistObj);
 
             _mapper.Setup(x => x.Map<IEnumerable<Bar>, IEnumerable<BarWithBeerModel>>(tmptestBarlistObj)).Returns(tmpBarWithBeerModel);
 
             foreach (var item in tmpBarWithBeerModel)
             {
-                _barservice.Setup(x => x.GetAllBeerWithBarid(item.Id)).Returns(testBeerlistObj);
+                _barService.Setup(x => x.GetAllBeerWithBarid(item.Id)).Returns(testBeerlistObj);
                 _mapper.Setup(x => x.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(testBeerlistObj)).Returns(tmpBarObjModel);
                 item.Beers = tmpBarObjModel;
             }
@@ -710,7 +707,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             //arrange
             var tmpnull = testBarlistObj;
             tmpnull = null;
-            _barservice.Setup(x => x.GetBar()).Returns(tmpnull);
+            _barService.Setup(x => x.GetBar()).Returns(tmpnull);
 
             var actual_Bar_responce = barController.GetAllBarsWithBeer();
 
@@ -742,7 +739,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
 
             _mapper.Setup(x => x.Map<BarBeersMappingModel, BarBeersMapping>(barBeersMappingModel)).Returns(_tmpBarobj);
 
-            _barservice.Setup(x => x.UpdateBarbeerModel(_tmpBarobj)).Returns(true);
+            _barService.Setup(x => x.UpdateBarbeerModel(_tmpBarobj)).Returns(true);
 
             var actual_Bar_responce = barController.UpdateBarbeerModel(barBeersMappingModel);
 

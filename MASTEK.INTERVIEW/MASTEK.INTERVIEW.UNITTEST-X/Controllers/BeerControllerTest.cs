@@ -1,12 +1,9 @@
-﻿using System;
-using System.Xml.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using MASTEK.INTERVIEW.API.Controllers;
 using MASTEK.INTERVIEW.API.ExceptionClaases;
 using MASTEK.INTERVIEW.API.Models;
 using MASTEK.INTERVIEW.DAL;
 using MASTEK.INTERVIEW.ENTITY;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 
