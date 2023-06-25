@@ -19,10 +19,10 @@ namespace MASTEK.INTERVIEW.DAL
             return context.Bars.Find(Id);
         }
 
-      
+
         public IEnumerable<Bar> GetBar()
         {
-           return context.Bars;
+            return context.Bars;
         }
 
 
@@ -44,7 +44,7 @@ namespace MASTEK.INTERVIEW.DAL
 
         public IEnumerable<Beer> GetAllBeerWithBarid(int barId)
         {
-           var beerIds= context.BarBeersMappings.Where(x => x.BarId == barId).Select(x=>x.BeerId);
+            var beerIds = context.BarBeersMappings.Where(x => x.BarId == barId).Select(x => x.BeerId);
             var beers = context.Beers.Where(x => beerIds.Contains(x.Id)).ToList();
             return beers;
         }

@@ -2,15 +2,15 @@
 
 namespace MASTEK.INTERVIEW.DAL
 {
-    public class BeerService<T>: IBeerservice<T>
+    public class BeerService<T> : IBeerservice<T>
     {
 
-        private readonly TestMastekDbContext context ;
+        private readonly TestMastekDbContext context;
 
 
         public BeerService(TestMastekDbContext testMastekDbContext)
         {
-             context = testMastekDbContext;
+            context = testMastekDbContext;
         }
 
         public Beer GetBeer(int Id)
@@ -18,10 +18,10 @@ namespace MASTEK.INTERVIEW.DAL
             return context.Beers.Find(Id);
         }
 
-      
+
         public IEnumerable<Beer> GetBeer(double? gtAlcoholByVolume, double? ltAlcoholByVolume)
         {
-           return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume &&  b.PercentageAlcoholByVolume < ltAlcoholByVolume);
+            return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume && b.PercentageAlcoholByVolume < ltAlcoholByVolume);
         }
 
         public bool PostBeer(Beer beer)
@@ -45,7 +45,7 @@ namespace MASTEK.INTERVIEW.DAL
 
         public bool IsExist(Beer beer)
         {
-           return context.Beers.Any(b => b.Name == beer.Name && b.PercentageAlcoholByVolume==beer.PercentageAlcoholByVolume && b.Id != beer.Id);
+            return context.Beers.Any(b => b.Name == beer.Name && b.PercentageAlcoholByVolume == beer.PercentageAlcoholByVolume && b.Id != beer.Id);
         }
     }
 }

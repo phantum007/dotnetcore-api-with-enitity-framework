@@ -5,12 +5,12 @@ namespace MASTEK.INTERVIEW.DAL
     public class BreweryService<T> : IBreweryService<T>
     {
 
-        private readonly TestMastekDbContext context ;
+        private readonly TestMastekDbContext context;
 
 
         public BreweryService(TestMastekDbContext testMastekDbContext)
-		{
-             context = testMastekDbContext;
+        {
+            context = testMastekDbContext;
         }
 
         public Brewery GetBrewery(int Id)
@@ -20,7 +20,7 @@ namespace MASTEK.INTERVIEW.DAL
 
         public IEnumerable<Brewery> GetBreweries()
         {
-           return context.Breweries;
+            return context.Breweries;
         }
 
         public bool PostBrewery(Brewery Brewery)
@@ -54,7 +54,7 @@ namespace MASTEK.INTERVIEW.DAL
 
         public bool IsExist(Brewery brewery)
         {
-            return context.Breweries.Any(b => b.Name == brewery.Name  && b.Id != brewery.Id);
+            return context.Breweries.Any(b => b.Name == brewery.Name && b.Id != brewery.Id);
         }
     }
 }

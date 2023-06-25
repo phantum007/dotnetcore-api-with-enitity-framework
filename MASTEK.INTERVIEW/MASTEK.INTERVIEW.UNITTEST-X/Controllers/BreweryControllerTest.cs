@@ -12,11 +12,11 @@ using Moq;
 
 namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
 {
-	public class BreweryControllerTest
+    public class BreweryControllerTest
     {
-        private  readonly BreweryController breweryController;
-        private readonly Mock<IBreweryService<TestMastekDbContext>> _breweryservice = new Mock<IBreweryService<TestMastekDbContext>> ();
-		private readonly Mock<ILogger<BreweryController>> _logger = new Mock<ILogger<BreweryController>>();
+        private readonly BreweryController breweryController;
+        private readonly Mock<IBreweryService<TestMastekDbContext>> _breweryservice = new Mock<IBreweryService<TestMastekDbContext>>();
+        private readonly Mock<ILogger<BreweryController>> _logger = new Mock<ILogger<BreweryController>>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
 
         public BreweryControllerTest()
@@ -30,26 +30,26 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
         {
             Id = 10,
             Name = "mock_brewery_name"
-            
+
         };
 
-        BreweryModel testBreweryModeelObj = new  BreweryModel()
+        BreweryModel testBreweryModeelObj = new BreweryModel()
         {
             Id = 2,
             Name = "mock_brewery_name"
-            
+
         };
 
-        List< Brewery> testBrewerylistObj = new List< Brewery>() {
+        List<Brewery> testBrewerylistObj = new List<Brewery>() {
                 new Brewery() {
                  Id = 100,
                  Name = "mock_brewery_name"
-                
+
             },
                 new Brewery() {
                  Id = 100,
                  Name = "mock_brewery_name"
-                
+
             }
         };
 
@@ -82,9 +82,9 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
 
             _breweryservice.Setup(x => x.GetBrewery(BreweryId)).Returns(testBreweryObj);
 
-            _mapper.Setup(x => x.Map< Brewery,  BreweryModel>(testBreweryObj))
+            _mapper.Setup(x => x.Map<Brewery, BreweryModel>(testBreweryObj))
                 .Returns(
-                    new  BreweryModel()
+                    new BreweryModel()
                     {
                         Id = testBreweryObj.Id,
                         Name = testBreweryObj.Name
@@ -95,7 +95,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
 
             var expected_responce = new BreweryResponseModel()
             {
-                breweryModel = new  BreweryModel()
+                breweryModel = new BreweryModel()
                 {
                     Id = testBreweryObj.Id,
                     Name = testBreweryObj.Name
@@ -116,9 +116,9 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
 
             _breweryservice.Setup(x => x.GetBrewery(_testBreweryObj.Id)).Returns(_testBreweryObj);
 
-            _mapper.Setup(x => x.Map< Brewery,  BreweryModel>(_testBreweryObj))
+            _mapper.Setup(x => x.Map<Brewery, BreweryModel>(_testBreweryObj))
                 .Returns(
-                    new  BreweryModel()
+                    new BreweryModel()
                     {
                         Id = testBreweryObj.Id,
                         Name = testBreweryObj.Name
@@ -238,7 +238,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             {
                 Id = testBreweryModeelObj.Id,
                 Name = testBreweryModeelObj.Name,
-               
+
             };
 
             _breweryservice.Setup(x => x.PutBrewery(_tmpBreweryobj)).Returns(true);
@@ -652,7 +652,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             {
                 BreweryId = breweryBeersMappingModel.BreweryId,
                 BeerId = breweryBeersMappingModel.BeerId,
-                Id=0
+                Id = 0
             };
 
             _mapper.Setup(x => x.Map<BreweryBeerMappingModel, BreweryBeersMapping>(breweryBeersMappingModel)).Returns(_tmpBreweryobj);
