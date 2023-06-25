@@ -13,9 +13,9 @@ namespace MASTEK.INTERVIEW.DAL
             context = testMastekDbContext;
         }
 
-        public Brewery GetBrewery(int Id)
+        public Brewery GetBrewery(int id)
         {
-            return context.Breweries.Find(Id);
+            return context.Breweries.Find(id);
         }
 
         public IEnumerable<Brewery> GetBreweries()
@@ -23,31 +23,31 @@ namespace MASTEK.INTERVIEW.DAL
             return context.Breweries;
         }
 
-        public bool PostBrewery(Brewery Brewery)
+        public bool PostBrewery(Brewery brewery)
         {
-            context.Add(Brewery);
+            context.Add(brewery);
             context.SaveChanges();
             return true;
         }
 
-        public bool PutBrewery(Brewery Brewery)
+        public bool PutBrewery(Brewery brewery)
         {
-            var entity = GetBrewery(Brewery.Id);
-            context.Entry(entity).CurrentValues.SetValues(Brewery);
+            var entity = GetBrewery(brewery.Id);
+            context.Entry(entity).CurrentValues.SetValues(brewery);
             context.SaveChanges();
             return true;
         }
 
-        public IEnumerable<Beer> GetAllBeerWithBarid(int Id)
+        public IEnumerable<Beer> GetAllBeerWithBarid(int id)
         {
-            var beerIds = context.BreweryBeersMappings.Where(x => x.BreweryId == Id).Select(x => x.BeerId);
+            var beerIds = context.BreweryBeersMappings.Where(x => x.BreweryId == id).Select(x => x.BeerId);
             var beers = context.Beers.Where(x => beerIds.Contains(x.Id)).ToList();
             return beers;
         }
 
-        public bool UpdateBrewerybeerModel(BreweryBeersMapping bbm)
+        public bool UpdateBrewerybeerModel(BreweryBeersMapping breweryBeersMapping)
         {
-            context.Add(bbm);
+            context.Add(breweryBeersMapping);
             context.SaveChanges();
             return true;
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MASTEK.INTERVIEW.ENTITY;
+﻿namespace MASTEK.INTERVIEW.ENTITY;
 
 public partial class Bar
 {

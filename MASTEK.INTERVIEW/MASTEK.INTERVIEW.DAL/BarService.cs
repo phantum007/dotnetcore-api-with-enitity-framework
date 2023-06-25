@@ -5,7 +5,6 @@ namespace MASTEK.INTERVIEW.DAL
     public class BarService<T> : IBarService<T>
     {
 
-
         private readonly TestMastekDbContext context;
 
         public BarService(TestMastekDbContext testMastekDbContext)
@@ -14,9 +13,9 @@ namespace MASTEK.INTERVIEW.DAL
         }
 
 
-        public Bar GetBar(int Id)
+        public Bar GetBar(int id)
         {
-            return context.Bars.Find(Id);
+            return context.Bars.Find(id);
         }
 
 
@@ -27,17 +26,17 @@ namespace MASTEK.INTERVIEW.DAL
 
 
 
-        public bool PostBar(Bar Bar)
+        public bool PostBar(Bar bar)
         {
-            context.Add(Bar);
+            context.Add(bar);
             context.SaveChanges();
             return true;
         }
 
-        public bool PutBar(Bar Bar)
+        public bool PutBar(Bar bar)
         {
-            var entity = GetBar(Bar.Id);
-            context.Entry(entity).CurrentValues.SetValues(Bar);
+            var entity = GetBar(bar.Id);
+            context.Entry(entity).CurrentValues.SetValues(bar);
             context.SaveChanges();
             return true;
         }
@@ -49,9 +48,9 @@ namespace MASTEK.INTERVIEW.DAL
             return beers;
         }
 
-        public bool UpdateBarbeerModel(BarBeersMapping bbm)
+        public bool UpdateBarbeerModel(BarBeersMapping barBeersMapping)
         {
-            context.Add(bbm);
+            context.Add(barBeersMapping);
             context.SaveChanges();
             return true;
         }

@@ -13,9 +13,9 @@ namespace MASTEK.INTERVIEW.DAL
             context = testMastekDbContext;
         }
 
-        public Beer GetBeer(int Id)
+        public Beer GetBeer(int id)
         {
-            return context.Beers.Find(Id);
+            return context.Beers.Find(id);
         }
 
 

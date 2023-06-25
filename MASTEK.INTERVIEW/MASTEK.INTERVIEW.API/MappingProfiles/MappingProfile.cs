@@ -15,7 +15,6 @@ namespace MASTEK.INTERVIEW.API.MappingProfiles
 
             CreateMap<Bar, BarModel>();
 			CreateMap<Bar, BarWithBeerModel>();
-			//.ForMember(d => d.Beers, o => o.MapFrom(s => s.Beers));
 
             CreateMap<BeerModel, Beer>();
 

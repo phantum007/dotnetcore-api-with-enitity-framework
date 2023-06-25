@@ -4,14 +4,14 @@ namespace MASTEK.INTERVIEW.DAL
 {
     public interface IBarService<T>
     {
-        Bar GetBar(int Id);
+        Bar GetBar(int id);
         IEnumerable<Bar> GetBar();
-        bool PutBar(Bar Id);
-        bool PostBar(Bar Bar);
+        bool PutBar(Bar id);
+        bool PostBar(Bar bar);
         bool IsExist(Bar beer);
 
-        public IEnumerable<Beer> GetAllBeerWithBarid(int Id);
-        public Boolean UpdateBarbeerModel(BarBeersMapping bbm);
+        public IEnumerable<Beer> GetAllBeerWithBarid(int id);
+        public Boolean UpdateBarbeerModel(BarBeersMapping barBeersMappingm);
 
     }
 }
