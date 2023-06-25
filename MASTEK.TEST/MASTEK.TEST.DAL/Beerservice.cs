@@ -20,11 +20,6 @@ namespace MASTEK.TEST.DAL
              context = testMastekDbContext;
         }
 
-        //public TestMastekDbContext GetContext()
-        //{
-        //    return context;
-        //}
-
         public Beer GetBeer(int Id)
         {
             return context.Beers.Find(Id);
