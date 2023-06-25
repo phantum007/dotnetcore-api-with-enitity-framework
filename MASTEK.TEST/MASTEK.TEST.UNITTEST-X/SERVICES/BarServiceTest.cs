@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Xml.Linq;
 using MASTEK.TEST.API.Controllers;
 using MASTEK.TEST.API;
@@ -11,106 +12,75 @@ using Moq.EntityFrameworkCore;
 
 namespace MASTEK.TEST.UNITTEST_X.SERVICES
 {
-    public class BeerserviceTest
+    public class BarserviceTest
     {
-        private  IBeerservice<TestMastekDbContext> _beerservice;
+        private  IBarService<TestMastekDbContext> _barservice;
         private readonly Mock<TestMastekDbContext> _context = new Mock<TestMastekDbContext>();
         private readonly DbContextOptions<TestMastekDbContext> options = new DbContextOptions<TestMastekDbContext>();
 
-        public BeerserviceTest()
+        public BarserviceTest()
         {
-            _beerservice = new Beerservice<TestMastekDbContext>(new TestMastekDbContext(options));
+            _barservice = new BarService<TestMastekDbContext>(new TestMastekDbContext(options));
         }
 
-        List<Beer> expectedBeers = new List<Beer>()
+        List<Bar> expectedBars = new List<Bar>()
         {
-           new Beer() {
+           new Bar() {
                 Id = 1,
-            Name = "corona",
-            PercentageAlcoholByVolume = 4
+            Name = "new_bar_edited"
         },
-           new Beer() {
+           new Bar() {
                 Id = 2,
-            Name = "corona extra",
-            PercentageAlcoholByVolume = 4
+            Name = "Garden Gate"
         }
         };
 
-        Beer expectedBeer = new Beer()
+        Bar expectedBar = new Bar()
         {
             Id = 1,
-            Name = "new_beer_edited",
-            PercentageAlcoholByVolume = 5
+            Name = "new_bar_edited"
         };
 
         [Fact]
-        public void GetBeer_with_id_good_flow()
+        public void GetBar_with_id_good_flow()
         {
-            var beerid = 1;
+            var barid = 1;
            
-            _context.Setup(x => x.Beers.Find(beerid)).Returns(expectedBeer);
-            var res = _beerservice.GetBeer(beerid);
-            Assert.Equivalent(expectedBeer, res);
+            _context.Setup(x => x.Bars.Find(barid)).Returns(expectedBar);
+            var res = _barservice.GetBar(barid);
+            Assert.Equivalent(expectedBar, res);
         }
 
         [Fact]
-        public void GetBeer_with_id_no_data()
+        public void GetBar_with_id_no_data()
         {
-            var beerid = 0;
-            var res = expectedBeer;
+            var barid = 0;
+            var res = expectedBar;
             res = null;
-            _context.Setup(x => x.Beers.Find(beerid)).Returns(res);
-            Assert.Equivalent(res, _beerservice.GetBeer(beerid));
+            _context.Setup(x => x.Bars.Find(barid)).Returns(res);
+            Assert.Equivalent(res, _barservice.GetBar(barid));
         }
 
         [Fact]
-        public void GetBeer_with_volume_good_flow()
+        public void GetBar_with_volume_good_flow()
         {
             var gt = 0;
             var lt = 100;
-            //_context.Setup(x => x.Beers.Where(x=>x.PercentageAlcoholByVolume>gt && x.PercentageAlcoholByVolume<lt).ToList()).Returns(expectedBeers);
-            var res = _beerservice.GetBeer(gt,lt);
+            //_context.Setup(x => x.Bars.Where(x=>x.PercentageAlcoholByVolume>gt && x.PercentageAlcoholByVolume<lt).ToList()).Returns(expectedBars);
+            var res = _barservice.GetBar();
             Assert.True(res.Count()>1);
         }
 
         [Fact]
-        public void GetBeer_with_volume_wrong_gt()
+        public void PutBar_good_flow()
         {
-            var gt = 100;
-            var lt = 110;
-            //_context.Setup(x => x.Beers.Where(x=>x.PercentageAlcoholByVolume>gt && x.PercentageAlcoholByVolume<lt).ToList()).Returns(expectedBeers);
-            var res = _beerservice.GetBeer(gt, lt);
-            Assert.True(res.Count() == 0);
-        }
-        [Fact]
-        public void GetBeer_with_volume_wrong_lt()
-        {
-            var gt = -1;
-            var lt = 0;
-            //_context.Setup(x => x.Beers.Where(x=>x.PercentageAlcoholByVolume>gt && x.PercentageAlcoholByVolume<lt).ToList()).Returns(expectedBeers);
-            var res = _beerservice.GetBeer(gt, lt);
-            Assert.True(res.Count() == 0);
-        }
-        [Fact]
-        public void GetBeer_with_volume_wrong_lt_gt()
-        {
-            var gt = 10;
-            var lt = 10;
-            //_context.Setup(x => x.Beers.Where(x=>x.PercentageAlcoholByVolume>gt && x.PercentageAlcoholByVolume<lt).ToList()).Returns(expectedBeers);
-            var res = _beerservice.GetBeer(gt, lt);
-            Assert.True(res.Count() == 0);
-        }
-
-        [Fact]
-        public void PutBeer_good_flow()
-        {
-            var res = _beerservice.PutBeer(expectedBeer);
+            var res = _barservice.PutBar(expectedBar);
             Assert.True(res);
         }
         [Fact]
-        public void PostBeer_good_flow()
+        public void PostBar_good_flow()
         {
-            var res = _beerservice.PutBeer(expectedBeer);
+            var res = _barservice.PutBar(expectedBar);
             Assert.True(res);
         }
 
