@@ -12,7 +12,7 @@ on:
 jobs:
   build_and_test:
     env:
-        SOLUTION : 'MASTEK.TEST/MASTEK.TEST.sln' 
+        SOLUTION : 'MASTEK.INTERVIEW/MASTEK.INTERVIEW.sln' 
         BUILD_CONFIG : 'Release' 
         
     runs-on: ubuntu-latest
@@ -34,13 +34,13 @@ jobs:
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
 
     - name: Run automated unit and integration tests
-      run: dotnet test MASTEK.TEST/MASTEK.TEST.UNITTEST-X/MASTEK.TEST.UNITTEST-X.csproj  /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      run: dotnet test MASTEK.INTERVIEW/MASTEK.INTERVIEW.UNITTEST-X/MASTEK.INTERVIEW.UNITTEST-X.csproj  /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
 
     - name: Publish coverage report to coveralls.io   
       uses: coverallsapp/github-action@master   
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }} 
-        path-to-lcov: MASTEK.TEST/MASTEK.TEST.UNITTEST-X/TestResults/coverage.info 
+        path-to-lcov: MASTEK.INTERVIEW/MASTEK.INTERVIEW.UNITTEST-X/TestResults/coverage.info 
 
     # - name: Test Report
     #   uses: dorny/test-reporter@v1

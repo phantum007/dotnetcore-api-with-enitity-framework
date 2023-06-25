@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
+                "${workspaceFolder}/MASTEK.INTERVIEW/MASTEK.INTERVIEW.API/MASTEK.INTERVIEW.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj",
+                "${workspaceFolder}/MASTEK.INTERVIEW/MASTEK.INTERVIEW.API/MASTEK.INTERVIEW.API.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/MASTEK.TEST/MASTEK.TEST.API/MASTEK.TEST.API.csproj"
+                "${workspaceFolder}/MASTEK.INTERVIEW/MASTEK.INTERVIEW.API/MASTEK.INTERVIEW.API.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
