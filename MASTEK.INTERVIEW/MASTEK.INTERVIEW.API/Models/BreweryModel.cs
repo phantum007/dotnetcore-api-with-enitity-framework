@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using MASTEK.INTERVIEW.ENTITY;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MASTEK.INTERVIEW.API.Models;
 

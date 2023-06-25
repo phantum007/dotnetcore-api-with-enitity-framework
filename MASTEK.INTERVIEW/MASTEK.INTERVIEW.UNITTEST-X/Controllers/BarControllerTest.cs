@@ -133,7 +133,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BarResponseModel()
             {
                 barModel = null,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id")
             };
 
             //Assert.Throws<ArgumentException>(() => barController.GetBar(_testBarObj.Id));
@@ -264,7 +264,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("one bar already exist with this name and address")
+                errorDetails = new InvalidInputOutputExceptions("one bar already exist with this name and address")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -300,7 +300,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for bar")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -336,7 +336,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for bar")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -372,7 +372,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for bar")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -440,7 +440,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("one bar already exist with this name and address")
+                errorDetails = new InvalidInputOutputExceptions("one bar already exist with this name and address")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -477,7 +477,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for bar")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -512,7 +512,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for bar")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -587,7 +587,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BarWithBeerResponseModel()
             {
                 barWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -609,7 +609,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BarWithBeerResponseModel()
             {
                 barWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("No bar found")
+                errorDetails = new InvalidInputOutputExceptions("No bar found")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -717,7 +717,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BarWithBeerResponseModel()
             {
                 barWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("No bars found")
+                errorDetails = new InvalidInputOutputExceptions("No bars found")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -772,7 +772,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -791,7 +791,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);
@@ -810,7 +810,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Bar_responce, expected_responce);

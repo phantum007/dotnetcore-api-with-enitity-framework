@@ -1,5 +1,4 @@
-﻿using System;
-namespace MASTEK.INTERVIEW.API.Models
+﻿namespace MASTEK.INTERVIEW.API.Models
 {
     public class ErrorResponse
     {

@@ -129,7 +129,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BreweryResponseModel()
             {
                 breweryModel = null,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id")
             };
 
             //Assert.Throws<ArgumentException>(() => breweryController.GetBrewery(_testBreweryObj.Id));
@@ -255,7 +255,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("one brewery already exist with this name")
+                errorDetails = new InvalidInputOutputExceptions("one brewery already exist with this name")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -290,7 +290,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for brewery")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for brewery")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -325,7 +325,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for brewery")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for brewery")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -395,7 +395,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("one brewery already exist with this name")
+                errorDetails = new InvalidInputOutputExceptions("one brewery already exist with this name")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -431,7 +431,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for brewery")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for brewery")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -505,7 +505,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BreweryWithBeerResponseModel()
             {
                 breweryWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("Invalid Input Value for Id")
+                errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -527,7 +527,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BreweryWithBeerResponseModel()
             {
                 breweryWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("No brewery found")
+                errorDetails = new InvalidInputOutputExceptions("No brewery found")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -632,7 +632,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new BreweryWithBeerResponseModel()
             {
                 breweryWithBeerModel = null,
-                errorDetails = new InvalidInputExceptions("No brewery found")
+                errorDetails = new InvalidInputOutputExceptions("No brewery found")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -687,7 +687,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -706,7 +706,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);
@@ -725,7 +725,7 @@ namespace MASTEK.INTERVIEW.UNITTEST_X.Controllers
             var expected_responce = new CreateUpdateResponseModel()
             {
                 status = false,
-                errorDetails = new InvalidInputExceptions("Invalid input param")
+                errorDetails = new InvalidInputOutputExceptions("Invalid input param")
             };
 
             Assert.Equivalent(actual_Brewery_responce, expected_responce);

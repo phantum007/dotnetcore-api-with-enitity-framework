@@ -1,11 +1,10 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using MASTEK.INTERVIEW.API.Models;
 using MASTEK.INTERVIEW.ENTITY;
 
 namespace MASTEK.INTERVIEW.API.MappingProfiles
 {
-	public class MappingProfile:Profile
+    public class MappingProfile:Profile
 	{
 		public MappingProfile()
 		{

@@ -1,21 +1,14 @@
-﻿using System;
-using Google;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
-using System.Runtime.InteropServices;
-using Microsoft.EntityFrameworkCore;
-using MASTEK.INTERVIEW.ENTITY;
-using System.Reflection.Metadata;
+﻿using MASTEK.INTERVIEW.ENTITY;
 
 namespace MASTEK.INTERVIEW.DAL
 {
-    public class Beerservice<T>: IBeerservice<T>
+    public class BeerService<T>: IBeerservice<T>
     {
 
         private readonly TestMastekDbContext context ;
 
 
-        public Beerservice(TestMastekDbContext testMastekDbContext)
+        public BeerService(TestMastekDbContext testMastekDbContext)
         {
              context = testMastekDbContext;
         }
@@ -30,12 +23,6 @@ namespace MASTEK.INTERVIEW.DAL
         {
            return context.Beers.Where(b => b.PercentageAlcoholByVolume > gtAlcoholByVolume &&  b.PercentageAlcoholByVolume < ltAlcoholByVolume);
         }
-
-
-        //internal IEnumerable<Beer> GetBeerByBreweryId(int breweryId)
-        //{
-        //    return context.Beers.Where(b => b.BreweryId == breweryId);
-        //}
 
         public bool PostBeer(Beer beer)
         {

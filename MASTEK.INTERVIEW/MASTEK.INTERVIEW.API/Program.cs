@@ -21,7 +21,7 @@ builder.Services.AddDbContext<TestMastekDbContext>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddScoped<IBeerservice<TestMastekDbContext>, Beerservice<TestMastekDbContext>>();
+builder.Services.AddScoped<IBeerservice<TestMastekDbContext>, BeerService<TestMastekDbContext>>();
 builder.Services.AddScoped<IBreweryService<TestMastekDbContext>, BreweryService<TestMastekDbContext>>();
 builder.Services.AddScoped<IBarService<TestMastekDbContext>, BarService<TestMastekDbContext>>();
 var app = builder.Build();

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using MASTEK.INTERVIEW.API.ExceptionClaases;
 using MASTEK.INTERVIEW.API.Models;
 using MASTEK.INTERVIEW.DAL;
@@ -27,13 +26,13 @@ public class BreweryController : ControllerBase
     #region Brewery
 
     [HttpGet("{id:int}")]
-    public BreweryResponseModel GetBrewery(int Id)
+    public BreweryResponseModel GetBrewery(int id)
     {
-        if (Id == 0)
+        if (id == 0)
         {
-            return new BreweryResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for Id") };
+            return new BreweryResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id") };
         }
-        var response = _mapper.Map<Brewery, BreweryModel>(_breweryService.GetBrewery(Id));
+        var response = _mapper.Map<Brewery, BreweryModel>(_breweryService.GetBrewery(id));
         return new BreweryResponseModel() { breweryModel = response };
     }
 
@@ -45,18 +44,18 @@ public class BreweryController : ControllerBase
     }
 
     [HttpPut]
-    public CreateUpdateResponseModel UpdateBrewery(BreweryModel brewerymodel)
+    public CreateUpdateResponseModel UpdateBrewery(BreweryModel breweryModel)
     {
 
-        var brewery = _mapper.Map<BreweryModel, Brewery>(brewerymodel);
+        var brewery = _mapper.Map<BreweryModel, Brewery>(breweryModel);
 
         if (brewery.Id == 0 || brewery.Name == null )
         {
-            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for brewery") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for brewery") };
         }
         if (_breweryService.IsExist(brewery))
         {
-            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one brewery already exist with this name") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("one brewery already exist with this name") };
         }
 
         return new CreateUpdateResponseModel() { status = _breweryService.PutBrewery(brewery) };
@@ -64,17 +63,17 @@ public class BreweryController : ControllerBase
     }
 
     [HttpPost]
-    public CreateUpdateResponseModel CreateBrewery(BreweryModel brewerymodel)
+    public CreateUpdateResponseModel CreateBrewery(BreweryModel breweryModel)
     {
-        var brewery = _mapper.Map<BreweryModel, Brewery>(brewerymodel);
+        var brewery = _mapper.Map<BreweryModel, Brewery>(breweryModel);
 
-        if (brewerymodel.Name == null )
+        if (breweryModel.Name == null )
         {
-            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for brewery") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for brewery") };
         }
         if (_breweryService.IsExist(brewery))
         {
-            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one brewery already exist with this name") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("one brewery already exist with this name") };
         }
 
         return new CreateUpdateResponseModel() { status = _breweryService.PostBrewery(brewery) };
@@ -85,19 +84,19 @@ public class BreweryController : ControllerBase
     #region Brewerybeer
 
     [HttpGet("{id:int}/beer")]
-    public BreweryWithBeerResponseModel GetBreweryWithBeer(int Id)
+    public BreweryWithBeerResponseModel GetBreweryWithBeer(int id)
     {
-        if (Id == 0)
+        if (id == 0)
         {
-            return new BreweryWithBeerResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for Id") };
+            return new BreweryWithBeerResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id") };
         }
-        var brewery = _breweryService.GetBrewery(Id);
+        var brewery = _breweryService.GetBrewery(id);
         if (brewery == null)
         {
-            return new BreweryWithBeerResponseModel() { errorDetails = new InvalidInputExceptions("No brewery found") };
+            return new BreweryWithBeerResponseModel() { errorDetails = new InvalidInputOutputExceptions("No brewery found") };
         }
         var breweryBeerResponse = _mapper.Map<Brewery, BreweryWithBeerModel>(brewery);
-        var beers = _breweryService.GetAllBeerWithBarid(Id);
+        var beers = _breweryService.GetAllBeerWithBarid(id);
         breweryBeerResponse.Beers = _mapper.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(beers);
 
         return new BreweryWithBeerResponseModel() {  breweryWithBeerModel = breweryBeerResponse };
@@ -110,7 +109,7 @@ public class BreweryController : ControllerBase
         var brewery = _breweryService.GetBreweries();
         if (brewery == null)
         {
-            return new BreweryWithBeerListResponseModel() { errorDetails = new InvalidInputExceptions("No brewery found") };
+            return new BreweryWithBeerListResponseModel() { errorDetails = new InvalidInputOutputExceptions("No brewery found") };
         }
         var breweryBeerResponse = _mapper.Map<IEnumerable<Brewery>, IEnumerable<BreweryWithBeerModel>>(brewery);
         foreach (var item in breweryBeerResponse)
@@ -126,7 +125,7 @@ public class BreweryController : ControllerBase
     {
         if (breweryWithBeerModel == null || breweryWithBeerModel.BreweryId <= 0 || breweryWithBeerModel.BeerId <= 0)
         {
-            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid input param") };
+            return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid input param") };
         }
         var bbm = _mapper.Map<BreweryBeerMappingModel, BreweryBeersMapping>(breweryWithBeerModel);
 

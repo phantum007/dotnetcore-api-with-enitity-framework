@@ -1,9 +1,8 @@
-﻿using System;
-using MASTEK.INTERVIEW.ENTITY;
+﻿using MASTEK.INTERVIEW.ENTITY;
 
 namespace MASTEK.INTERVIEW.DAL
 {
-	public interface IBarService<T>
+    public interface IBarService<T>
     {
         Bar GetBar(int Id);
         IEnumerable<Bar> GetBar();

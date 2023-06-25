@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using MASTEK.INTERVIEW.API.ExceptionClaases;
 using MASTEK.INTERVIEW.API.Models;
 using MASTEK.INTERVIEW.DAL;
@@ -14,15 +13,15 @@ public class BarController : ControllerBase
 {
 
 
-private readonly IBarService<TestMastekDbContext> _barservice;
+private readonly IBarService<TestMastekDbContext> _barService;
 private readonly ILogger<BarController> _logger;
 private readonly IMapper _mapper;
 
 
-public BarController(ILogger<BarController> logger, IBarService<TestMastekDbContext> Barservice, IMapper mapper)
+public BarController(ILogger<BarController> logger, IBarService<TestMastekDbContext> barService, IMapper mapper)
 {
     _logger = logger;
-    _barservice = Barservice;
+    _barService = barService;
     _mapper = mapper;
 }
 
@@ -30,94 +29,94 @@ public BarController(ILogger<BarController> logger, IBarService<TestMastekDbCont
 #region BAR
 
 [HttpGet("{id:int}")]
-public BarResponseModel GetBar(int Id)
+public BarResponseModel GetBar(int id)
 {
-    if (Id == 0)
+    if (id == 0)
     {
-        return new BarResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for Id") };
+        return new BarResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id") };
     }
-    var response = _mapper.Map<Bar, BarModel>(_barservice.GetBar(Id));
+    var response = _mapper.Map<Bar, BarModel>(_barService.GetBar(id));
     return new BarResponseModel() { barModel = response };
 }
 
 [HttpGet]
 public BarListResponseModel GetBar()
 {
-    var response = _mapper.Map<IEnumerable<Bar>, IEnumerable<BarModel>>(_barservice.GetBar());
+    var response = _mapper.Map<IEnumerable<Bar>, IEnumerable<BarModel>>(_barService.GetBar());
     return new BarListResponseModel() { barsModel = response };
 }
 
 [HttpPut]
-public CreateUpdateResponseModel UpdateBar(BarModel barmodel)
+public CreateUpdateResponseModel UpdateBar(BarModel barModel)
 {
-    var bar = _mapper.Map<BarModel, Bar>(barmodel);
+    var bar = _mapper.Map<BarModel, Bar>(barModel);
 
-    if (barmodel.Id == 0 || barmodel.Name == null || barmodel.Address == null)
+    if (barModel.Id == 0 || barModel.Name == null || barModel.Address == null)
     {
-        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for bar") };
+        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar") };
     }
-    if (_barservice.IsExist(bar))
+    if (_barService.IsExist(bar))
     {
-        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one bar already exist with this name and address") };
+        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("one bar already exist with this name and address") };
     }
 
-    return new CreateUpdateResponseModel() { status = _barservice.PutBar(bar) };
+    return new CreateUpdateResponseModel() { status = _barService.PutBar(bar) };
 }
 
 [HttpPost]
-public CreateUpdateResponseModel CreateBar(BarModel barmodel)
+public CreateUpdateResponseModel CreateBar(BarModel barModel)
 {
-    var bar = _mapper.Map<BarModel, Bar>(barmodel);
+    var bar = _mapper.Map<BarModel, Bar>(barModel);
 
-    if ( barmodel.Name == null || barmodel.Address == null)
+    if (barModel.Name == null || barModel.Address == null)
     {
-        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for bar") };
+        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for bar") };
     }
-    if (_barservice.IsExist(bar))
+    if (_barService.IsExist(bar))
     {
-        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("one bar already exist with this name and address") };
+        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("one bar already exist with this name and address") };
     }
 
-    return new CreateUpdateResponseModel() { status = _barservice.PostBar(bar) };
+    return new CreateUpdateResponseModel() { status = _barService.PostBar(bar) };
 }
 #endregion
 
 #region BAR_BEER
 
 [HttpGet("{id:int}/beer")]
-public BarWithBeerResponseModel GetBarWithBeer(int Id)
+public BarWithBeerResponseModel GetBarWithBeer(int id)
 {
-    if (Id == 0)
+    if (id == 0)
     {
-        return new BarWithBeerResponseModel() { errorDetails = new InvalidInputExceptions("Invalid Input Value for Id") };
+        return new BarWithBeerResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid Input Value for Id") };
     }
-    var bar = _barservice.GetBar(Id);
+    var bar = _barService.GetBar(id);
     if (bar == null)
     {
-        return new BarWithBeerResponseModel() { errorDetails = new InvalidInputExceptions("No bar found") };
+        return new BarWithBeerResponseModel() { errorDetails = new InvalidInputOutputExceptions("No bar found") };
     }
-    var barBeerResponse = _mapper.Map<Bar, BarWithBeerModel>(bar);
-    var beers = _barservice.GetAllBeerWithBarid(Id);
-    barBeerResponse.Beers = _mapper.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(beers);
+    var response = _mapper.Map<Bar, BarWithBeerModel>(bar);
+    var beers = _barService.GetAllBeerWithBarid(id);
+    response.Beers = _mapper.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(beers);
 
-    return new BarWithBeerResponseModel() { barWithBeerModel = barBeerResponse };
+    return new BarWithBeerResponseModel() { barWithBeerModel = response };
 }
 
 [HttpGet("beer")]
 public BarWithBeerListResponseModel GetAllBarsWithBeer()
 {
-    var bars = _barservice.GetBar();
+    var bars = _barService.GetBar();
     if (bars == null)
     {
-        return new BarWithBeerListResponseModel() { errorDetails = new InvalidInputExceptions("No bars found") };
+        return new BarWithBeerListResponseModel() { errorDetails = new InvalidInputOutputExceptions("No bars found") };
     }
-    var barBeerResponse = _mapper.Map<IEnumerable<Bar>, IEnumerable<BarWithBeerModel>>(bars);
-    foreach (var item in barBeerResponse)
+    var response = _mapper.Map<IEnumerable<Bar>, IEnumerable<BarWithBeerModel>>(bars);
+    foreach (var item in response)
     {
-        var beers = _barservice.GetAllBeerWithBarid(item.Id);
+        var beers = _barService.GetAllBeerWithBarid(item.Id);
         item.Beers = _mapper.Map<IEnumerable<Beer>, IEnumerable<BeerModel>>(beers);
     }
-    return new BarWithBeerListResponseModel() { barWithBeerModel = barBeerResponse };
+    return new BarWithBeerListResponseModel() { barWithBeerModel = response };
 }
 
 [HttpPost("beer")]
@@ -125,11 +124,11 @@ public CreateUpdateResponseModel UpdateBarbeerModel(BarBeersMappingModel barBeer
 {
     if (barBeerMapping == null || barBeerMapping.BarId <=0 || barBeerMapping.BeerId <= 0)
     {
-        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputExceptions("Invalid input param") };
+        return new CreateUpdateResponseModel() { errorDetails = new InvalidInputOutputExceptions("Invalid input param") };
     }
-    var bbm = _mapper.Map<BarBeersMappingModel, BarBeersMapping>(barBeerMapping);
+    var barBeer = _mapper.Map<BarBeersMappingModel, BarBeersMapping>(barBeerMapping);
 
-        return new CreateUpdateResponseModel() { status = _barservice.UpdateBarbeerModel(bbm) };
+        return new CreateUpdateResponseModel() { status = _barService.UpdateBarbeerModel(barBeer) };
 }
 #endregion
 }

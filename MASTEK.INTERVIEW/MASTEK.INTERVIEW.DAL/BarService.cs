@@ -1,11 +1,4 @@
-﻿using System;
-using Google;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
-using System.Runtime.InteropServices;
-using Microsoft.EntityFrameworkCore;
-using MASTEK.INTERVIEW.ENTITY;
-using System.Reflection.Metadata;
+﻿using MASTEK.INTERVIEW.ENTITY;
 
 namespace MASTEK.INTERVIEW.DAL
 {

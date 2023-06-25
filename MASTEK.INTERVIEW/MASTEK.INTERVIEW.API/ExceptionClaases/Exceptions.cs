@@ -1,9 +1,8 @@
-﻿using System;
-namespace MASTEK.INTERVIEW.API.ExceptionClaases
+﻿namespace MASTEK.INTERVIEW.API.ExceptionClaases
 {
-	public class InvalidInputExceptions : Exception
+    public class InvalidInputOutputExceptions : Exception
     {
-        public InvalidInputExceptions(string message)
+        public InvalidInputOutputExceptions(string message)
         : base(message)
         {
         }
